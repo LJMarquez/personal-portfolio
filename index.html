@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Starter</title>
+    <link rel="icon" type="image/x-icon" href="">
+        <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="home"></div>
+    <nav>
+        
+            <a href="#home" class="grow">Home</a>
+            <a href="#projects" class="grow">Projects</a>
+            <a href="#contact" class="grow">Contact</a>
+            <a href="#about-me" class="grow">About</a>
+        
+    </nav>
+    <div class="intro-banner">
+        <div class="welcome-text">
+        <h1>Hi!
+            <br>
+            I'm Leo, and I Like
+        </h1>
+        <span>Making Things</span>
+        </div>
+        <div class="cover-image"><img src="https://media2.giphy.com/media/uXZOSmv0glEDpG26VC/giphy.gif?cid=6c09b952edcvsbjupljhcbnal9pyjxixdx5zr87g3grsmcww&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s" alt=""></div>
+    </div>
+    <div id="projects"></div>
+
+    <div id="search-wrapper">
+    <input type="text" id="project-search" placeholder="Search for a project">
+    <button id="search">Search</button>
+    <!-- <select name="" id="filters">
+        <option value="filter" selected>Filter</option>
+        <option value="new-old">Newest to Oldest</option>
+        <option value="old-new">Oldest to Newest</option>
+        <option value="has-html">Has HTML</option>
+        <option value="has-css">Has CSS</option>
+        <option value="has-js">Has Javascript</option>
+    </select> -->
+    <div id="project-list">
+        <a href="">Culinary Showdown</a>
+        <a href="">Random Doors Game</a>
+        <a href="">Mario Calculator</a>
+        <a href="">Wordle Game</a>
+        <a href="">2 Player Soccer Game</a>
+        <a href="">Fashun Shopping Site</a>
+    </div>
+    </div>
+
+    <div class="project-wrapper">
+        <div class="header"><h1>Culinary Showdown</h1></div>
+        <div class="content">
+            <div class="project-image">
+                <a href="https://ljmarquez.github.io/Culinary-Showdown/" target="_blank" class="image-grow"><img src="https://drive.google.com/uc?export=view&id=1xZNIEThWYlxFeh8_iuO0VwlHRsRAtuhN" alt=""></a>
+            </div>
+            <div class="project-desc">
+                <h1>Can You Take On Gordon Ramsay?</h1>
+                <p>This game was built using HTML, CSS, and Javascript and encompasses 
+                    all of the topics I have learned in my first year of West-MEC. It is 
+                    a typing/adventure game (mostly) complete with audio, interactivity, and 
+                    just a few bugs. It utilizes the JS canvas, eventlisteners, inputs,
+                    <span id="showdown-dots"> . . .</span>
+                    <span id="showdown-more"> arrays, and loops which append elements to the DOM. This is just scraping the surface 
+                        of what this game covers, but I plan to make my projects more in-depth and 
+                        entertaining in the future.</span></p>
+                    <button id="showdown-button" onclick="showdownReveal()">More</button>
+                </p>
+            </div>
+        </div>
+        <div class="project-link">
+            <p>Check out the code here:</p>
+            <a href="https://github.com/LJMarquez/Culinary-Showdown" target="_blank" class="link-grow">Culinary Showdown Repository</a>
+        </div>
+    </div> <!-- end project wrapper -->
+
+    <div class="project-wrapper">
+        <div class="header"><h1>Random Doors Game</h1></div>
+        <div class="content">
+            <div class="project-image">
+                <a href="https://ljmarquez.github.io/FNAF-Door-Game/" target="_blank" class="image-grow"><img src="https://drive.google.com/uc?export=view&id=1lsQdxPVdT8bT-_9mhCClMDX8rtnMOXwl" alt=""></a>
+                <!-- <p>Project Live View</p> -->
+            </div>
+
+            <!-- target="_blank" -->
+
+            <div class="project-desc">
+                <h1>Will You Survive The Night?</h1>
+                <p>This game was built using HTML, CSS, and Javascript and focuses on random
+                number generation to determine the outcome the game. It includes other
+                elements such as keyframe animations and capturing user information
+                from an input.</p>
+            </div>
+        </div>
+        <div class="project-link">
+            <p>Check out the code here:</p>
+            <a href="https://github.com/LJMarquez/FNAF-Door-Game/blob/main/index.html" target="_blank" class="link-grow">FNAF Door Game Repository</a>
+        </div>
+    </div> <!-- end project wrapper -->
+    <div class="project-wrapper">
+        <div class="header"><h1>Mario Calculator</h1></div>
+        <div class="content">
+            <div class="project-image">
+                <a href="https://ljmarquez.github.io/Calculator-Project/" target="_blank" class="image-grow"><img src="https://drive.google.com/uc?export=view&id=1_0uRf9i2-PBtbYP7ierVozApRQ92ieQh" alt=""></a>
+            </div>
+            <div class="project-desc">
+                <h1>Have Fun With Math!</h1>
+                <p>This game was built using HTML, CSS, and Javascript and focuses
+                    on using conditions to check values and assign the user's inputs
+                    accordingly. It utilizes some other elements such as a for loop
+                    to create the buttons, flex display, switch cases.</p>
+            </div>
+        </div>
+        <div class="project-link">
+            <p>Check out the code here:</p>
+            <a href="https://github.com/LJMarquez/Calculator-Project/blob/main/index.html" target="_blank" class="link-grow">Mario Calculator Repository</a>
+        </div>
+    </div> <!-- end project wrapper -->
+    <div class="project-wrapper">
+        <div class="header"><h1>Wordle Game</h1></div>
+        <div class="content">
+            <div class="project-image">
+                <a href="https://ljmarquez.github.io/Wordle-Game/" target="_blank" class="image-grow"><img src="https://drive.google.com/uc?export=view&id=1LMiVaJZKY7Ybv5Xn0ebYtASwzVkxClZp" alt=""></a>
+            </div>
+            <div class="project-desc">
+                <h1>Can You Guess The Word?</h1>
+                <p>This game was built using HTML, CSS, and Javascript and focuses
+                    on manipulating strings to check if the user's input (guess)
+                    is equivalent to the phrase. Other elements that are utilized
+                    are a for each loop to create the inputs, values, and an eventListener
+                    to check for everytime the<span id="wordle-dots"> . . .</span>
+                    <span id="wordle-more"> input value is changed and if the value
+                    is equal to the phrase.</span></p>
+                    <button id="wordle-button" onclick="wordleReveal()">More</button>
+            </div>
+        </div>
+        <div class="project-link">
+            <p>Check out the code here:</p>
+            <a href="https://github.com/LJMarquez/Wordle-Game/blob/main/index.html" target="_blank" class="link-grow">Wordle Game Repository</a>
+        </div>
+    </div> <!-- end project wrapper -->
+    <div class="project-wrapper">
+        <div class="header"><h1>2 Player Soccer Game</h1></div>
+        <div class="content">
+            <div class="project-image">
+                <a href="https://ljmarquez.github.io/Soccer-Game/" target="_blank" class="image-grow"><img src="https://drive.google.com/uc?export=view&id=1ksyGgzS4fq18d8CL9fPH-CgayKgFVJhj" alt=""></a>
+            </div>
+            <div class="project-desc">
+                <h1>GOOOAAALLL!!!</h1>
+                <p>This game was built using HTML, CSS, and Javascript and focuses
+                    on using the canvas element to create shapes which act as the
+                    players, ball, and goal. These shapes have logic added to them
+                    for when they collide with each other to change the direction
+                    and speed of the<span id="soccer-dots"> . . .</span><span id="soccer-more"> ball.
+                    It utilizes some other elements such as eventListeners for keys
+                    on the keyboard, functions to create the game elements, and using
+                    random logic to set the speed of the ball.</span></p>
+                    <button id="soccer-button" onclick="soccerReveal()">More</button>
+            </div>
+        </div>
+        <div class="project-link">
+            <p>Check out the code here:</p>
+            <a href="https://github.com/LJMarquez/Soccer-Game/blob/main/index.html" target="_blank" class="link-grow">Soccer Game Repository</a>
+        </div>
+    </div> <!-- end project wrapper -->
+    <div class="project-wrapper">
+        <div class="header"><h1>Fashun Shopping Site</h1></div>
+        <div class="content">
+            <div class="project-image">
+                <a href="https://ljmarquez.github.io/Fashun-Site/" target="_blank" class="image-grow"><img src="https://drive.google.com/uc?export=view&id=1whC1_3cof4qhaGvyYQ74UgngM2ZtShnD" alt=""></a>
+            </div>
+            <div class="project-desc">
+                <h1>What's Your Style?</h1>
+                <p>This project was built using HTML, CSS, and Javascript and focuses
+                    on utilizing media queries to make the website fit on multiple 
+                    different screen resolutions. The media queries are used in the CSS
+                    to manipulate your HTML in different ways. It also utilizes :nth 
+                    child in CSS to capture <span id="fashun-dots"> . . .</span><span id="fashun-more">a specific child in a parent element 
+                        containing multiple nested elements.</span></p>
+                    <button id="fashun-button" onclick="fashunReveal()">More</button>
+            </div>
+        </div>
+        <div class="project-link">
+            <p>Check out the code here:</p>
+            <a href="https://github.com/LJMarquez/Fashun-Site/blob/main/index.html" target="_blank" class="link-grow">Fashun Site Repository</a>
+        </div>
+    </div> <!-- end project wrapper -->
+    <div id="about-me"></div>
+    <script src="main.js"></script>
+</body>
+</html>

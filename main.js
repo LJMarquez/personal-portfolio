@@ -66,14 +66,53 @@ function fashunReveal() {
 
 // }
 
-{/* <a href="">Culinary Showdown</a>
-<a href="">Random Doors Game</a>
-<a href="">Mario Calculator</a>
-<a href="">Wordle Game</a>
-<a href="">2 Player Soccer Game</a>
-<a href="">Fashun Shopping Site</a> */}
-let myProjects = ["Culinary Showdown", "Random Doors Game", "Mario Calculator", "Wordle Game", "2 Player Soccer Game", "Fashun Shopping Site"];
-const searchBar = document.getElementById('project-search')
-function search() {
-  filter = searchBar.value.toUpperCase();
-}
+
+// const searchBar = document.getElementById('project-search')
+// function search() {
+//   filter = searchBar.value.toUpperCase();
+// }
+
+class Project {
+  constructor(
+    title,
+    projectLink,
+    header,
+    description,
+    repoLink,
+    coverImg
+    ) {
+      this.title = title;
+      this.projectLink = projectLink;
+      this.header = header;
+      this.description = description;
+      this.repoLink = repoLink;
+      this.coverImg = coverImg;
+    }
+  }
+  
+  let myProjects = [
+    new Project(
+      "Culinary Showdown",
+      "https://ljmarquez.github.io/Culinary-Showdown/",
+      "Can You Take On Gordon Ramsay?",
+      "This game was built using HTML, CSS, and Javascript and encompasses all of the topics I have learned in my first semester of West-MEC. It is a typing/adventure game (mostly) complete with audio, interactivity, and just a few bugs. It utilizes the JS canvas, eventlisteners, inputs, arrays, and loops which append elements to the DOM. This is just scraping the surface of what this game covers, but I plan to make my projects more in-depth and entertaining in the future.",
+      "https://github.com/LJMarquez/Culinary-Showdown",
+      "showdown-cover.jpg"
+    ),
+    new Project(
+      "Random Doors Game",
+      "https://ljmarquez.github.io/FNAF-Door-Game/",
+      "Will You Survive The Night?",
+      "This game was built using HTML, CSS, and Javascript and focuses on random number generation to determine the outcome the game. It includes other elements such as keyframe animations and capturing user information from an input.",
+      "https://github.com/LJMarquez/FNAF-Door-Game/blob/main/index.html",
+      "fnaf-game-cover.jpg"
+    ),
+    new Project(
+      "Javascript Calculator",
+      "https://ljmarquez.github.io/Calculator-Project/",
+      "Have Fun With Math!",
+      "This game was built using HTML, CSS, and Javascript and focuses on using conditions to check values and assign the user's inputs accordingly. It utilizes some other elements such as a for loop to create the buttons, flex display, switch cases.",
+      "calculator-cover.jpg"
+    )
+    ];
+    // "Mario Calculator", "Wordle Game", "2 Player Soccer Game", "Fashun Shopping Site"

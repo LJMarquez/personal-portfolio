@@ -204,6 +204,12 @@ a.link-grow:hover {
   padding-left: 0.5vw;
 }
 
+.about-link {
+  text-decoration: underline;
+  color: #6bb6f5;
+  margin: 0;
+}
+
 #featured {
     background-color: #0b3954;
     text-align: center;
@@ -269,8 +275,15 @@ a.link-grow:hover {
 
 .slide-img {
     width: 80%;
+    height: 80%;
+    margin: auto;
     margin-bottom: 2vh;
+    margin-top: 1.5vh;
     border-radius: 2vh;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 

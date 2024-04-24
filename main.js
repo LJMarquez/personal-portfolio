@@ -1,5 +1,8 @@
-const codingProjectContainer = document.getElementById("coding-project-container");
+const codingProjectContainer = document.getElementById(
+  "coding-project-container"
+);
 const personalitiesSpan = document.getElementById("personalities-span");
+const slideshowContainer = document.getElementById("slideshow-container");
 
 // const searchBar = document.getElementById('project-search')
 // function search() {
@@ -18,7 +21,7 @@ class Project {
   }
 }
 
-let culinaryShowdown =   new Project(
+let culinaryShowdown = new Project(
   "Culinary Showdown",
   "culinary-showdown",
   "https://ljmarquez.github.io/Culinary-Showdown/",
@@ -28,73 +31,73 @@ let culinaryShowdown =   new Project(
   "showdown-cover.jpg"
 );
 
-let doorsGame =   new Project(
+let doorsGame = new Project(
   "Random Doors Game",
   "doors-game",
   "https://ljmarquez.github.io/FNAF-Door-Game/",
   "Will You Survive The Night?",
   "This game was built using HTML, CSS, and Javascript and focuses on random number generation to determine the outcome the game. It includes other elements such as keyframe animations and capturing user information from an input.",
-  "https://github.com/LJMarquez/FNAF-Door-Game/blob/main/index.html",
+  "https://github.com/LJMarquez/FNAF-Door-Game/tree/main",
   "fnaf-game-cover.jpg"
 );
 
-let jsCalculator =   new Project(
+let jsCalculator = new Project(
   "Javascript Calculator",
   "js-calculator",
   "https://ljmarquez.github.io/Calculator-Project/",
   "Have Fun With Math!",
   "This game was built using HTML, CSS, and Javascript and focuses on using conditions to check values and assign the user's inputs accordingly. It utilizes some other elements such as a for loop to create the buttons, flex display, switch cases.",
-  "https://github.com/LJMarquez/Calculator-Project/blob/main/index.html",
+  "https://github.com/LJMarquez/Calculator-Project/tree/main",
   "calculator-cover.jpg"
 );
 
-let wordleGame =   new Project(
+let wordleGame = new Project(
   "Wordle Game",
   "wordle-game",
   "https://ljmarquez.github.io/Wordle-Game/",
   "Can You Guess The Word?",
   "This game was built using HTML, CSS, and Javascript and focuses on manipulating strings to check if the user's input (guess) is equivalent to the phrase. Other elements that are utilized are a for each loop to create the inputs, values, and an eventListener to check for everytime the input value is changed and if the value is equal to the phrase.",
-  "https://github.com/LJMarquez/Wordle-Game/blob/main/index.html",
+  "https://github.com/LJMarquez/Wordle-Game/tree/main",
   "wordle-game-cover.jpg"
 );
 
-let soccerGame =   new Project(
+let soccerGame = new Project(
   "2 Player Soccer Game",
   "soccer-game",
   "https://ljmarquez.github.io/Soccer-Game/",
   "GOOOAAALLL!!!",
   "This game was built using HTML, CSS, and Javascript and focuses on using the canvas element to create shapes which act as the players, ball, and goal. These shapes have logic added to them for when they collide with each other to change the direction and speed of the ball. It utilizes some other elements such as eventListeners for keys on the keyboard, functions to create the game elements, and using random logic to set the speed of the ball.",
-  "https://github.com/LJMarquez/Soccer-Game/blob/main/index.html",
+  "https://github.com/LJMarquez/Soccer-Game/tree/main",
   "soccer-game-cover.jpg"
 );
 
-let fashunSite =   new Project(
+let fashunSite = new Project(
   "Fashun Shopping Site",
   "fashun-site",
   "https://ljmarquez.github.io/Fashun-Site/",
   "What's Your Style?",
   "This project was built using HTML, CSS, and Javascript and focuses on utilizing media queries to make the website fit on multiple different screen resolutions. The media queries are used in the CSS to manipulate your HTML in different ways. It also utilizes :nth child in CSS to capture a specific child in a parent element containing multiple nested elements.",
-  "https://github.com/LJMarquez/Fashun-Site/blob/main/index.html",
+  "https://github.com/LJMarquez/Fashun-Site/tree/main",
   "fashun-cover.jpg"
 );
 
-let novatechSite =   new Project(
-    "NovaTech Job Site",
-    "novatech-site",
-    "",
-    "Find Your Dream Job!",
-    "",
-    "",
-    "novatech-cover.jpg"
-  );
+let novatechSite = new Project(
+  "NovaTech Job Site",
+  "novatech-site",
+  "https://ljmarquez.github.io/FBLA-State/",
+  "Find Your Dream Job!",
+  "This was the first project I developed that was a little bit more advanced. It involved stringing together multiple files, running logic gates to make sure ceratin page elements only loaded on certain pages, storing and retrieving data across multiple files using local storage, procedural js to create page elements, and much much more! This project also won me first place at my FBLA Regional competition and third place at the state competition. I talk a little bit more about FBLA on my <a class=\'about-link\' href=\'./pages/about.html\'>about page</a>!",
+  "https://github.com/LJMarquez/FBLA-State/tree/final",
+  "novatech-cover.jpg"
+);
 
-let crocGame =   new Project(
+let crocGame = new Project(
   "Croc-O-Rena",
   "croc-o-rena-game",
-  "",
+  "https://ljmarquez.github.io/Phaser-Game/",
   "Be the Last One Standing!",
   "",
-  "",
+  "https://github.com/LJMarquez/Phaser-Game",
   "croc-o-rena-cover.jpg"
 );
 
@@ -118,7 +121,7 @@ if (document.body.contains(codingProjectContainer)) {
     titleWrapper.classList.add("project-title");
 
     let title = document.createElement("h1");
-    title.innerText = `${project.title}`;
+    title.innerHTML = `${project.title}`;
 
     titleWrapper.appendChild(title);
     projectDiv.appendChild(titleWrapper);
@@ -147,26 +150,29 @@ if (document.body.contains(codingProjectContainer)) {
     descriptionDiv.classList.add("project-desc");
 
     let projectHeader = document.createElement("h1");
-    projectHeader.innerText = `${project.header}`;
+    projectHeader.innerHTML = `${project.header}`;
 
     let projectDescription = document.createElement("p");
     descriptionDiv.appendChild(projectHeader);
     descriptionDiv.appendChild(projectDescription);
 
     if (project.description.length > 280) {
-      projectDescription.innerText = project.description.slice(0, 275);
+      projectDescription.innerHTML = project.description.slice(0, 275);
       let dots = document.createElement("span");
-      dots.innerText = " . . .";
+      dots.innerHTML = " . . .";
       descriptionDiv.appendChild(dots);
 
       let more = document.createElement("span");
-      more.innerText = project.description.slice(275, project.description.length);
+      more.innerHTML = project.description.slice(
+        275,
+        project.description.length
+      );
       more.style.display = "none";
       descriptionDiv.appendChild(more);
 
       let moreButton = document.createElement("button");
       moreButton.classList.add("more-button");
-      moreButton.innerText = "More";
+      moreButton.innerHTML = "More";
       descriptionDiv.appendChild(moreButton);
 
       moreButton.addEventListener("click", (e) => {
@@ -181,7 +187,7 @@ if (document.body.contains(codingProjectContainer)) {
         }
       });
     } else {
-      projectDescription.innerText = `${project.description}`;
+      projectDescription.innerHTML = `${project.description}`;
     }
 
     content.appendChild(descriptionDiv);
@@ -190,13 +196,13 @@ if (document.body.contains(codingProjectContainer)) {
     let projectRepoDiv = document.createElement("div");
     projectRepoDiv.classList.add("project-link");
     let repoHeader = document.createElement("p");
-    repoHeader.innerText = "Check out the code here:";
+    repoHeader.innerHTML = "Check out the code here:";
 
     let repoLink = document.createElement("a");
-    repoLink.innerText = `${project.title} Repository`;
+    repoLink.innerHTML = `${project.title} Repository`;
     repoLink.classList.add("link-grow");
     repoLink.target = "_blank";
-    repoLink.href = `${repoLink}`;
+    repoLink.href = `${project.repoLink}`;
 
     projectRepoDiv.appendChild(repoHeader);
     projectRepoDiv.appendChild(repoLink);
@@ -207,24 +213,19 @@ if (document.body.contains(codingProjectContainer)) {
   });
 }
 
-let personalitiesArray = [
-  "Developer",
-  "Designer",
-  "Creator",
-  "Learner",
-];
+let personalitiesArray = ["Developer", "Designer", "Creator", "Learner"];
 
 let personalityIndex = 0;
 let animIndex = 0;
 
 if (document.body.contains(personalitiesSpan)) {
-  setTimeout(function() {
+  setTimeout(function () {
     typePersonality();
   }, 1000);
 }
 
 function typePersonality() {
-  const typingInterval = setInterval( function() {
+  const typingInterval = setInterval(function () {
     let text = personalitiesArray[personalityIndex];
     personalitiesSpan.innerHTML += text[animIndex];
     animIndex++;
@@ -235,8 +236,8 @@ function typePersonality() {
       if (personalityIndex === personalitiesArray.length) {
         personalityIndex = 0;
       }
-      setTimeout(function() {
-        const deletingInterval = setInterval(function() {
+      setTimeout(function () {
+        const deletingInterval = setInterval(function () {
           text = text.slice(0, -1);
           personalitiesSpan.innerHTML = text;
           if (text.length === 0) {
@@ -254,16 +255,35 @@ let featuredProjects = [
   crocGame,
   // skillsRegional,
   // skillsState
-]
+];
 
-featuredProjects.forEach( () => {
-  document.createElement('div');
-});
+if (document.body.contains(slideshowContainer)) {
+  featuredProjects.forEach((project) => {
+    let slideDiv = document.createElement("div");
+    slideDiv.classList.add("featured-slide");
 
-let featuredArrows = document.querySelectorAll('.featured-arrow');
-console.log(featuredArrows)
+    let slideHeader = document.createElement("h1");
+    slideHeader.classList.add("slide-title");
+    slideHeader.innerHTML = `${project.title}`;
+
+    let slideImg = document.createElement("div");
+    slideImg.classList.add("slide-img");
+    slideImg.style.backgroundImage = `url(./assets/project-covers/${project.coverImg})`;
+
+    slideDiv.appendChild(slideHeader);
+    slideDiv.appendChild(slideImg);
+
+    slideshowContainer.appendChild(slideDiv);
+  });
+}
+
+let featuredIndex = 0;
+
+let featuredArrows = document.querySelectorAll(".featured-arrow");
 featuredArrows.forEach((arrow) => {
   arrow.addEventListener("click", () => {
+    arrow.style.animation = "none";
+    arrow.offsetHeight;
     arrow.style.animation = "bounce .3s ease";
-  })
-})
+  });
+});

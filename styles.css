@@ -50,23 +50,24 @@ nav {
   height: 10vh;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: right;
   position: fixed;
   left: 0%;
   top: 0%;
-  z-index: 1;
+  z-index: 2;
+}
+
+nav > a {
+  width: 8%;
 }
 
 a {
   text-decoration: none;
-  /* background-color: yellow; */
   text-align: center;
   color: white;
   /* color: coral; */
   font-family: "Comfortaa", sans-serif;
-  width: 20%;
   display: inline-block;
-  margin: 0 2%;
 }
 
 .intro-banner {
@@ -205,8 +206,13 @@ a.link-grow:hover {
   padding-left: 0.5vw;
 }
 
+.more-button:hover {
+  cursor: pointer;
+}
+
 .about-link {
   text-decoration: underline;
+  display: inline;
   color: #6bb6f5;
   margin: 0;
 }
@@ -230,9 +236,9 @@ a.link-grow:hover {
 }
 
 #slideshow-container {
-  /* display: flex;
+  display: flex;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
 
   width: 100%;
   height: 87%;
@@ -282,50 +288,77 @@ a.link-grow:hover {
 }
 
 .featured-slide {
-  margin: auto;
-  margin-bottom: 10vh;
   width: 60%;
-  height: 95%;
+  height: 32rem;
   background-color: lightblue;
   border-radius: 2vh;
   transform-origin: center center;
-  position: relative;
+  position: absolute;
+  top: 16%;
+}
+
+.inactive-slide {
+  display: none;
 }
 
 .slide-title {
   border-top-left-radius: 2vh;
   border-top-right-radius: 2vh;
   background-color: #041b29;
+  padding: 1vh;
+  position: relative;
+}
+
+.slide-title > h1 {
   font-family: "Comfortaa", sans-serif;
   color: #64afed;
-  padding: 2vh;
+}
+
+.slide-img-wrapper {
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide-img {
-  width: 75%;
-  height: 75%;
-  margin: auto;
-  margin-top: 2vh;
-  border-radius: 2vh;
-
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  width: 80%;
+  /* margin: auto; */
+  /* margin-top: 3vh; */
+  border: 0.7rem solid white;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.4rem 0.4rem rgba(0, 0, 0, 0.5);
+  user-select: none;
 }
 
 .dot {
   width: 2.5vh;
   height: 2.5vh;
-  top: 6%;
+  top: 35%;
   position: absolute;
   background-color: red;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot > i {
+  font-size: 2vh;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.dot > i:hover {
+  opacity: 1;
 }
 
 .info-icon {
   position: absolute;
   color: white;
-  top: 5%;
+  top: 35%;
   right: 5%;
   font-size: 1.5rem;
   transition: transform 0.3s;
@@ -376,7 +409,7 @@ a.link-grow:hover {
     transform: scale(1) translateX(0);
   }
   100% {
-    transform: scale(0.3) translateX(-190rem);
+    transform: scale(0.3) translateX(-200vw);
   }
 }
 
@@ -385,6 +418,86 @@ a.link-grow:hover {
     transform: scale(1) translateX(0);
   }
   100% {
-    transform: scale(0.3) translateX(190rem);
+    transform: scale(0.3) translateX(200vw);
   }
+}
+
+@keyframes enterLeft {
+  0% {
+    transform: scale(0.3) translateX(200vw);
+  }
+  100% {
+    transform: scale(1) translateX(0vw);
+  }
+}
+
+@keyframes enterRight {
+  0% {
+    transform: scale(0.3) translateX(-200vw);
+  }
+  100% {
+    transform: scale(1) translateX(0vw);
+  }
+}
+
+.modal {
+  width: 30vw;
+  padding: 2vh;
+  font-size: 2.75vh;
+  border-radius: 1.5rem;
+}
+
+.modal-header {
+  font-family: "Comfortaa", sans-serif;
+}
+
+.modal-info {
+  font-family: "Comfortaa", sans-serif;
+  line-height: 3.5vh;
+}
+
+.modal-link {
+  margin: auto;
+  width: 40%;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  background-color: #07636d;
+  border: 0.25rem solid #07636d;
+  font-weight: 600;
+  border-radius: 2rem;
+  padding: 1vh;
+  font-family: "Comfortaa", sans-serif;
+  display: block;
+  transition: color 0.5s, backgroundColor 0.5s, border 0.5s;
+}
+
+.modal-link:hover {
+  color: #07636d;
+  background-color: white;
+  border: 0.25rem solid #07636d;
+}
+
+.modal-more-button {
+  font-family: "Comfortaa", sans-serif;
+  line-height: 3.5vh;
+  font-size: 2.75vh;
+  border: none;
+  background-color: transparent;
+  color: #6bb6f5;
+}
+
+.modal-more-button:hover {
+  cursor: pointer;
+}
+
+.modal-close {
+  transition: color 0.5s;
+  float: right;
+  font-size: 3vh;
+}
+
+.modal-close:hover {
+  cursor: pointer;
+  color: red;
 }

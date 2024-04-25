@@ -10,6 +10,7 @@ html {
 body {
   background-color: #087e8b;
   overflow-x: hidden;
+  padding-bottom: 20vh;
 }
 
 /* width */
@@ -42,19 +43,19 @@ div.content {
 }
 
 nav {
-    background-color: rgba(8, 126, 139);
-    box-shadow: 0 4px 10px -4px black;
-    /* background-color: white; */
-    width: 100%;
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    position: fixed;
-    left: 0%;
-    top: 0%;
-    z-index: 1;
-  }
+  background-color: rgba(8, 126, 139);
+  box-shadow: 0 4px 10px -4px black;
+  /* background-color: white; */
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  z-index: 1;
+}
 
 a {
   text-decoration: none;
@@ -211,81 +212,129 @@ a.link-grow:hover {
 }
 
 #featured {
-    background-color: #0b3954;
-    text-align: center;
-    padding: 1vh;
-    width: 100%;
-    height: 70vh;
+  background-color: #0b3954;
+  text-align: center;
+  padding: 1vh;
+  padding-bottom: 5vh;
+  width: 100%;
+  height: 70vh;
+  position: relative;
 }
 
 #featured > h1 {
-    color: white;
-    font-family: "Comfortaa", sans-serif;
-    font-size: 1.5vw;
-    margin-bottom: 4vh;
+  color: white;
+  font-family: "Comfortaa", sans-serif;
+  font-size: 1.5vw;
+  padding: 1vh;
+  margin-bottom: 1vh;
 }
 
 #slideshow-container {
-    /* display: flex;
+  /* display: flex;
     align-items: center;
     justify-content: center; */
 
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 100%;
+  height: 87%;
+  overflow: hidden;
+}
+
+.border-grad {
+  width: 20%;
+  height: 87%;
+  position: absolute;
+  top: 12%;
+  /* background-image: linear-gradient(90deg, transparent 20%, yellow, transparent 80%); */
+  /* z-index: -1; */
+  /* background-color: rgba(200, 0, 0, 0.5); */
+}
+
+.left-grad {
+  left: 0;
+  background-image: linear-gradient(90deg, #0b3954, transparent);
+}
+
+.right-grad {
+  right: 0;
+  background-image: linear-gradient(90deg, transparent, #0b3954);
 }
 
 .featured-arrow {
-    color: white;
-    position: absolute;
-    top: 40%;
-    font-size: 4vh;
-    transition: transform 0.3s;
+  color: white;
+  position: absolute;
+  top: 55%;
+  font-size: 4vh;
+  transition: transform 0.3s;
+  z-index: 1;
 }
 
 .featured-arrow:hover {
-    cursor: pointer;
-    transform: scale(1.4);
+  cursor: pointer;
+  transform: scale(1.4);
 }
 
 .prev {
-    left: 15%;
+  left: 15%;
 }
 
 .next {
-    right: 15%;
+  right: 15%;
 }
 
 .featured-slide {
-    margin: auto;
-    width: 60%;
-    height: 80%;
-    background-color: lightblue;
-    border-radius: 2vh;
+  margin: auto;
+  margin-bottom: 10vh;
+  width: 60%;
+  height: 95%;
+  background-color: lightblue;
+  border-radius: 2vh;
+  transform-origin: center center;
+  position: relative;
 }
 
 .slide-title {
-    border-top-left-radius: 2vh;
-    border-top-right-radius: 2vh;
-    background-color: #041b29;
-    font-family: "Comfortaa", sans-serif;
-    color: #64afed;
-    padding: 1vh;
+  border-top-left-radius: 2vh;
+  border-top-right-radius: 2vh;
+  background-color: #041b29;
+  font-family: "Comfortaa", sans-serif;
+  color: #64afed;
+  padding: 2vh;
 }
 
 .slide-img {
-    width: 80%;
-    height: 80%;
-    margin: auto;
-    margin-bottom: 2vh;
-    margin-top: 1.5vh;
-    border-radius: 2vh;
+  width: 75%;
+  height: 75%;
+  margin: auto;
+  margin-top: 2vh;
+  border-radius: 2vh;
 
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
+.dot {
+  width: 2.5vh;
+  height: 2.5vh;
+  top: 6%;
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.info-icon {
+  position: absolute;
+  color: white;
+  top: 5%;
+  right: 5%;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.info-icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
 
 @keyframes enterSlideDown {
   0% {
@@ -308,16 +357,34 @@ a.link-grow:hover {
   }
 }
 @keyframes bounce {
-    0% {
-        transform: scale(1.4);
-    }
-    33% {
-        transform: scale(0.9);
-    }
-    66% {
-        transform: scale(1.7);
-    }
-    100% {
-        transform: scale(1.4);
-    }
+  0% {
+    transform: scale(1.4);
+  }
+  33% {
+    transform: scale(0.9);
+  }
+  66% {
+    transform: scale(1.7);
+  }
+  100% {
+    transform: scale(1.4);
+  }
+}
+
+@keyframes exitLeft {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    transform: scale(0.3) translateX(-190rem);
+  }
+}
+
+@keyframes exitRight {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    transform: scale(0.3) translateX(190rem);
+  }
 }

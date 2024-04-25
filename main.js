@@ -139,7 +139,7 @@ if (document.body.contains(codingProjectContainer)) {
 
     let coverImg = document.createElement("img");
     coverImg.classList.add("project-cover-image");
-    coverImg.src = `assets/project-covers/${project.coverImg}`;
+    coverImg.src = `/assets/project-covers/${project.coverImg}`;
     coverImg.alt = `Landing page for Leo's ${project.title} project.`;
 
     projectPageLink.appendChild(coverImg);
@@ -250,15 +250,17 @@ function typePersonality() {
   }, 50);
 }
 
-let featuredProjects = [
+let featuredProjectsArray = [
   novatechSite,
   crocGame,
   // skillsRegional,
   // skillsState
 ];
 
+let featuredProjectSlides = [];
+
 if (document.body.contains(slideshowContainer)) {
-  featuredProjects.forEach((project) => {
+  featuredProjectsArray.forEach((project) => {
     let slideDiv = document.createElement("div");
     slideDiv.classList.add("featured-slide");
 
@@ -268,22 +270,60 @@ if (document.body.contains(slideshowContainer)) {
 
     let slideImg = document.createElement("div");
     slideImg.classList.add("slide-img");
-    slideImg.style.backgroundImage = `url(./assets/project-covers/${project.coverImg})`;
+    slideImg.style.backgroundImage = `url(/assets/project-covers/${project.coverImg})`;
 
+    // let dot1 = document.createElement('div');
+    // dot1.classList.add('dot');
+    // dot1.style.left = "3%";
+    // dot1.style.backgroundColor = "red";
+    // let dot2 = document.createElement('div');
+    // dot2.classList.add('dot');
+    // dot2.style.left = "6%";
+    // dot2.style.backgroundColor = "yellow";
+    // let dot3 = document.createElement('div');
+    // dot3.classList.add('dot');
+    // dot3.style.left = "9%";
+    // dot3.style.backgroundColor = "lightgreen";
+
+    let infoIcon = document.createElement('i');
+    infoIcon.classList.add('fa-solid', 'fa-circle-info', 'info-icon');
+    
+    // slideDiv.appendChild(dot1);
+    // slideDiv.appendChild(dot2);
+    // slideDiv.appendChild(dot3);
+    slideDiv.appendChild(infoIcon);
     slideDiv.appendChild(slideHeader);
     slideDiv.appendChild(slideImg);
 
     slideshowContainer.appendChild(slideDiv);
+    featuredProjectSlides.push(slideDiv);
   });
 }
 
 let featuredIndex = 0;
+let activeSlide = featuredProjectSlides[featuredIndex];
+// activeSlide.classList.add('activelide');
 
 let featuredArrows = document.querySelectorAll(".featured-arrow");
 featuredArrows.forEach((arrow) => {
   arrow.addEventListener("click", () => {
+    activeSlide.classList.remove('active')
     arrow.style.animation = "none";
     arrow.offsetHeight;
     arrow.style.animation = "bounce .3s ease";
+    if (arrow.classList.contains('next')) {
+      featuredIndex++;
+      if (featuredIndex > featuredProjectSlides.length) {
+        featuredIndex = 0;
+      }
+      activeSlide.style.animation = "exitRight 1s ease-in forwards";
+    } else {
+      featuredIndex--;
+      if (featuredIndex < 0) {
+        featuredIndex = featuredProjectSlides.length;
+      }
+      activeSlide.style.animation = "exitLeft 1s ease-in forwards";
+    }
+    activeSlide = featuredProjectSlides[featuredIndex];
   });
 });

@@ -238,7 +238,7 @@ if (document.body.contains(codingProjectContainer)) {
   });
 }
 
-let personalitiesArray = ["Developer", "Designer", "Creator", "Learner"];
+let personalitiesArray = ["Developer", "Designer", "Creator", "Programmer", "Learner"];
 
 let personalityIndex = 0;
 let animIndex = 0;
@@ -246,7 +246,7 @@ let animIndex = 0;
 if (document.body.contains(personalitiesSpan)) {
   setTimeout(function () {
     typePersonality();
-  }, 1000);
+  }, 2000);
 }
 
 function typePersonality() {

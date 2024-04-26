@@ -1,6 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap");
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('/assets/fonts/Comfortaa.ttf');
+}
 
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=IBM+Plex+Mono:wght@400&display=swap");
+@font-face {
+  font-family: 'FiraCode';
+  src: url('/assets/fonts/FiraCode.ttf');
+}
+
+@font-face {
+  font-family: 'Maloney';
+  src: url('/assets/fonts/Maloney.ttf');
+}
 
 body,
 html {
@@ -10,7 +21,7 @@ html {
 body {
   background-color: #087e8b;
   overflow-x: hidden;
-  padding-bottom: 20vh;
+  /* padding-bottom: 20vh; */
 }
 
 /* width */
@@ -73,7 +84,7 @@ a {
 .intro-banner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 60vh;
+  height: 75vh;
   color: white;
   font-family: "Comfortaa", sans-serif;
   font-size: 1.5vw;
@@ -87,7 +98,7 @@ a {
 }
 
 .intro-banner > .welcome-text > span {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "FiraCode", monospace;
   font-size: 3.5vw;
   animation: enterSlideRight 2s ease-out forwards;
 }
@@ -289,7 +300,7 @@ a.link-grow:hover {
 
 .featured-slide {
   width: 60%;
-  height: 32rem;
+  height: 80%;
   background-color: lightblue;
   border-radius: 2vh;
   transform-origin: center center;
@@ -367,6 +378,45 @@ a.link-grow:hover {
 .info-icon:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+#home-text {
+  text-align: center;
+  margin: auto;
+  color: white;
+  font-family: "Comfortaa", sans-serif;
+  width: 90%;
+  margin-top: 10vh;
+  margin-bottom: 20vh;
+  padding: 3rem;
+}
+
+#web-dev {
+  font-family: "FiraCode", monospace;
+}
+
+#gd {
+  font-family: "Maloney";
+}
+
+#home-text > a {
+  font-size: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: white;
+  background-color: #07636d;
+  border: 0.25rem solid #07636d;
+  text-align: center;
+  border-radius: 2rem;
+  padding: 1vh;
+  transition: color 0.5s, backgroundColor 0.5s, border 0.5s;
+  font-weight: 600;
+}
+
+#home-text > a:hover {
+  color: #07636d;
+  background-color: white;
+  border: 0.25rem solid #07636d;
 }
 
 @keyframes enterSlideDown {

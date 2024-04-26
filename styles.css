@@ -1,21 +1,21 @@
 @font-face {
   font-family: 'Comfortaa';
-  src: url('/assets/fonts/Comfortaa.ttf');
+  src: url('./assets/fonts/Comfortaa.ttf');
 }
 
 @font-face {
   font-family: 'FiraCode';
-  src: url('/assets/fonts/FiraCode.ttf');
+  src: url('./assets/fonts/FiraCode.ttf');
 }
 
 @font-face {
   font-family: 'Maloney';
-  src: url('/assets/fonts/Maloney.ttf');
+  src: url('./assets/fonts/Maloney.ttf');
 }
 
 @font-face {
   font-family: 'Dunley';
-  src: url('/assets/fonts/Dunley.otf');
+  src: url('./assets/fonts/Dunley.otf');
 }
 
 body,

@@ -164,7 +164,7 @@ if (document.body.contains(codingProjectContainer)) {
 
     let coverImg = document.createElement("img");
     coverImg.classList.add("project-cover-image");
-    coverImg.src = `/assets/project-covers/${project.coverImg}`;
+    coverImg.src = `./assets/project-covers/${project.coverImg}`;
     coverImg.alt = `Landing page for Leo's ${project.title} project.`;
 
     projectPageLink.appendChild(coverImg);
@@ -304,7 +304,7 @@ if (document.body.contains(slideshowContainer)) {
 
     let coverImg = document.createElement("img");
     coverImg.classList.add("slide-img");
-    coverImg.src = `/assets/project-covers/${project.coverImg}`;
+    coverImg.src = `./assets/project-covers/${project.coverImg}`;
     coverImg.alt = `Landing page for Leo's ${project.title} project.`;
 
     projectPageLink.appendChild(coverImg);
@@ -443,5 +443,5 @@ function slideEnter(direction) {
 }
 
 function sendEmail() {
-  window.open('mailto:marquez.');
+  window.open('mailto:marquez.leo100@gmail.com');
 }

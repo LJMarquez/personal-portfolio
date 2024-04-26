@@ -13,13 +13,19 @@
   src: url('/assets/fonts/Maloney.ttf');
 }
 
+@font-face {
+  font-family: 'Dunley';
+  src: url('/assets/fonts/Dunley.otf');
+}
+
 body,
 html {
   margin: 0;
   scroll-behavior: smooth;
 }
 body {
-  background-color: #087e8b;
+  /* background-color: #087e8b; */
+  background-color: darkslategray;
   overflow-x: hidden;
   /* padding-bottom: 20vh; */
 }
@@ -54,7 +60,8 @@ div.content {
 }
 
 nav {
-  background-color: rgba(8, 126, 139);
+  /* background-color: rgba(8, 126, 139); */
+  background-color: darkslateblue;
   box-shadow: 0 4px 10px -4px black;
   /* background-color: white; */
   width: 100%;
@@ -89,7 +96,8 @@ a {
   font-family: "Comfortaa", sans-serif;
   font-size: 1.5vw;
   padding-top: 25vh;
-  margin-left: 15vw;
+  padding-left: 15vw;
+  padding-right: 15vw;
   line-height: 4vw;
 }
 
@@ -99,6 +107,7 @@ a {
 
 .intro-banner > .welcome-text > span {
   font-family: "FiraCode", monospace;
+  color: yellow;
   font-size: 3.5vw;
   animation: enterSlideRight 2s ease-out forwards;
 }
@@ -229,7 +238,8 @@ a.link-grow:hover {
 }
 
 #featured {
-  background-color: #0b3954;
+  /* background-color: #0b3954; */
+  background-color: rgb(25, 41, 41);
   text-align: center;
   padding: 1vh;
   padding-bottom: 5vh;
@@ -261,19 +271,16 @@ a.link-grow:hover {
   height: 87%;
   position: absolute;
   top: 12%;
-  /* background-image: linear-gradient(90deg, transparent 20%, yellow, transparent 80%); */
-  /* z-index: -1; */
-  /* background-color: rgba(200, 0, 0, 0.5); */
 }
 
 .left-grad {
   left: 0;
-  background-image: linear-gradient(90deg, #0b3954, transparent);
+  /* background-image: linear-gradient(90deg, #0b3954, transparent); */
 }
 
 .right-grad {
   right: 0;
-  background-image: linear-gradient(90deg, transparent, #0b3954);
+  /* background-image: linear-gradient(90deg, transparent, #0b3954); */
 }
 
 .featured-arrow {
@@ -301,7 +308,7 @@ a.link-grow:hover {
 .featured-slide {
   width: 60%;
   height: 80%;
-  background-color: lightblue;
+  background-color: lightsteelblue;
   border-radius: 2vh;
   transform-origin: center center;
   position: absolute;
@@ -313,6 +320,9 @@ a.link-grow:hover {
 }
 
 .slide-title {
+  border-top: 0.3rem solid lightsteelblue;
+  border-left: 0.3rem solid lightsteelblue;
+  border-right: 0.3rem solid lightsteelblue;
   border-top-left-radius: 2vh;
   border-top-right-radius: 2vh;
   background-color: #041b29;
@@ -322,7 +332,8 @@ a.link-grow:hover {
 
 .slide-title > h1 {
   font-family: "Comfortaa", sans-serif;
-  color: #64afed;
+  /* color: #64afed; */
+  color: lightsteelblue;
 }
 
 .slide-img-wrapper {
@@ -389,6 +400,7 @@ a.link-grow:hover {
   margin-top: 10vh;
   margin-bottom: 20vh;
   padding: 3rem;
+  font-size: 1.3rem;
 }
 
 #web-dev {
@@ -396,27 +408,57 @@ a.link-grow:hover {
 }
 
 #gd {
-  font-family: "Maloney";
+  font-family: "Dunley";
+  font-size: 3rem;
 }
 
 #home-text > a {
   font-size: 2rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  margin-top: 1rem;
   color: white;
-  background-color: #07636d;
-  border: 0.25rem solid #07636d;
+  background-color: darkslateblue;
+  border: 0.25rem solid darkslateblue;
+  box-shadow: 0rem .3rem .3rem .2rem black;
   text-align: center;
-  border-radius: 2rem;
-  padding: 1vh;
-  transition: color 0.5s, backgroundColor 0.5s, border 0.5s;
+  border-radius: 5rem;
+  padding: 0.75rem;
+  transition: transform 0.5s;
   font-weight: 600;
 }
 
 #home-text > a:hover {
-  color: #07636d;
-  background-color: white;
-  border: 0.25rem solid #07636d;
+  transform: scale(1.2);
+}
+
+footer {
+  width: 100%;
+  /* background-color: #0b3954; */
+  /* background-color: darkslateblue; */
+  background-color: rgb(25, 41, 41);
+  color: white;
+  padding: 2rem;
+}
+
+footer > p {
+  font-family: "Comfortaa", sans-serif;
+  display: inline;
+  font-size: 1.4rem;
+}
+
+#socials {
+  float: right;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: 3rem;
+}
+
+.footer-icon {
+  width: 10%;
+  font-size: 1.6rem;
 }
 
 @keyframes enterSlideDown {

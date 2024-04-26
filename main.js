@@ -441,3 +441,7 @@ function slideEnter(direction) {
     activeSlide.style.animation = "enterRight 0.75s ease-out forwards";
   }
 }
+
+function sendEmail() {
+  window.open('mailto:marquez.');
+}

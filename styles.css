@@ -91,25 +91,32 @@ a {
 .intro-banner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 75vh;
+  height: 95vh;
   color: white;
   font-family: "Comfortaa", sans-serif;
   font-size: 1.5vw;
-  padding-top: 25vh;
-  padding-left: 15vw;
-  padding-right: 15vw;
+  /* padding-top: 25vh; */
+  /* padding-left: 15vw; */
+  /* padding-right: 15vw; */
   line-height: 4vw;
 }
 
-.welcome-text > h1 {
-  animation: enterSlideDown 2s ease-out forwards;
+.welcome-text {
+  padding-top: 35vh;
+  padding-left: 15vw;
 }
 
-.intro-banner > .welcome-text > span {
+.welcome-text > h1 {
+  /* animation: enterSlideDown 2s ease-out forwards; */
+  margin: 0;
+}
+
+#personalities-span {
   font-family: "FiraCode", monospace;
   color: yellow;
   font-size: 3.5vw;
-  animation: enterSlideRight 2s ease-out forwards;
+  padding-top: 75rem;
+  /* animation: enterSlideRight 2s ease-out forwards; */
 }
 
 a.grow {
@@ -148,10 +155,14 @@ a.link-grow:hover {
 }
 
 .project-wrapper {
-  background-color: #0b3954;
-  margin-top: 10vh;
-  margin-left: 3vw;
-  margin-right: 3vw;
+  /* background-color: #0b3954; */
+  width: 80%;
+  background-color: rgb(25, 41, 41);
+  box-shadow: 0rem .3rem .3rem .2rem black;
+  /* margin-top: 10vh; */
+  /* margin-left: 3vw; */
+  /* margin-right: 3vw; */
+  margin: auto;
   margin-bottom: 15vh;
   border-radius: 3vw;
   padding-top: 2vw;
@@ -161,8 +172,9 @@ a.link-grow:hover {
   margin-left: 5vw;
   font-family: "Comfortaa", sans-serif;
   font-weight: bold;
-  color: #bfd7ea;
-  font-size: 1.4vw;
+  /* color: #bfd7ea; */
+  color: #6bb6f5;
+  font-size: 1.2vw;
 }
 
 .project-image {
@@ -193,11 +205,12 @@ a.link-grow:hover {
   text-align: center;
   line-height: 3vh;
   margin-bottom: 6vh;
+  font-size: 1.6rem;
 }
 .project-desc > p,
 .project-desc > span {
   text-align: center;
-  font-size: 1.3vw;
+  font-size: 1rem;
   display: inline;
   line-height: 1.5vh;
 }
@@ -210,7 +223,8 @@ a.link-grow:hover {
   font-size: 1.5vw;
 }
 .project-link > a {
-  color: #bfd7ea;
+  /* color: #bfd7ea; */
+  color: #6bb6f5;
   font-size: 1.3vw;
   width: 90%;
 }
@@ -219,8 +233,8 @@ a.link-grow:hover {
   color: #6bb6f5;
   display: inline;
   line-height: 1.5vh;
-  font-size: 1.3vw;
-  background-color: #0b3954;
+  font-size: 1rem;
+  background-color: transparent;
   border: none;
   font-family: "Comfortaa", sans-serif;
   padding-left: 0.5vw;
@@ -275,12 +289,12 @@ a.link-grow:hover {
 
 .left-grad {
   left: 0;
-  /* background-image: linear-gradient(90deg, #0b3954, transparent); */
+  background-image: linear-gradient(90deg, rgb(25, 41, 41), transparent);
 }
 
 .right-grad {
   right: 0;
-  /* background-image: linear-gradient(90deg, transparent, #0b3954); */
+  background-image: linear-gradient(90deg, transparent, rgb(25, 41, 41));
 }
 
 .featured-arrow {
@@ -308,7 +322,7 @@ a.link-grow:hover {
 .featured-slide {
   width: 60%;
   height: 80%;
-  background-color: lightsteelblue;
+  background-color: lightgray;
   border-radius: 2vh;
   transform-origin: center center;
   position: absolute;
@@ -320,9 +334,9 @@ a.link-grow:hover {
 }
 
 .slide-title {
-  border-top: 0.3rem solid lightsteelblue;
-  border-left: 0.3rem solid lightsteelblue;
-  border-right: 0.3rem solid lightsteelblue;
+  border-top: 0.3rem solid lightgray;
+  border-left: 0.3rem solid lightgray;
+  border-right: 0.3rem solid lightgray;
   border-top-left-radius: 2vh;
   border-top-right-radius: 2vh;
   background-color: #041b29;
@@ -333,7 +347,7 @@ a.link-grow:hover {
 .slide-title > h1 {
   font-family: "Comfortaa", sans-serif;
   /* color: #64afed; */
-  color: lightsteelblue;
+  color: whitesmoke;
 }
 
 .slide-img-wrapper {
@@ -349,7 +363,7 @@ a.link-grow:hover {
   width: 80%;
   /* margin: auto; */
   /* margin-top: 3vh; */
-  border: 0.7rem solid white;
+  border: 0.7rem solid whitesmoke;
   border-radius: 1rem;
   box-shadow: 0 0 0.4rem 0.4rem rgba(0, 0, 0, 0.5);
   user-select: none;
@@ -461,6 +475,19 @@ footer > p {
   font-size: 1.6rem;
 }
 
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
 @keyframes enterSlideDown {
   0% {
     transform: translateY(-25vh);
@@ -537,6 +564,8 @@ footer > p {
   padding: 2vh;
   font-size: 2.75vh;
   border-radius: 1.5rem;
+  background-color: darkslategray;
+  color: whitesmoke;
 }
 
 .modal-header {
@@ -554,8 +583,8 @@ footer > p {
   text-decoration: none;
   text-align: center;
   color: white;
-  background-color: #07636d;
-  border: 0.25rem solid #07636d;
+  background-color: darkslateblue;
+  border: 0.25rem solid darkslateblue;
   font-weight: 600;
   border-radius: 2rem;
   padding: 1vh;
@@ -565,9 +594,9 @@ footer > p {
 }
 
 .modal-link:hover {
-  color: #07636d;
+  color: darkslateblue;
   background-color: white;
-  border: 0.25rem solid #07636d;
+  border: 0.25rem solid darkslateblue;
 }
 
 .modal-more-button {

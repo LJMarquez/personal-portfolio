@@ -8,6 +8,17 @@ const modalClose = document.querySelector(".modal-close");
 const modalHeader = document.querySelector(".modal-header");
 const modalInfo = document.querySelector(".modal-info");
 
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));
+
 if (document.body.contains(modal)) {
   modalClose.addEventListener("click", (e) => {
     modal.close();

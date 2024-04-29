@@ -1,8 +1,16 @@
-const codingProjectContainer = document.getElementById(
-  "coding-project-container"
-);
+const codingProjectContainer = document.getElementById("coding-project-container");
+const graphicDesignProjectContainer = document.getElementById("graphic-design-project-container");
+
 const personalitiesSpan = document.getElementById("personalities-span");
 const slideshowContainer = document.getElementById("slideshow-container");
+
+const codeProjects = document.getElementById("code-projects");
+const awardProjects = document.getElementById("award-projects");
+const gdProjects = document.getElementById("gd-projects");
+
+const fblaProjectContainer = document.getElementById('fbla-project-container');
+const skillsUSAProjectContainer = document.getElementById('skillsusa-project-container');
+
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".modal-close");
 const modalHeader = document.querySelector(".modal-header");
@@ -11,12 +19,19 @@ const modalInfo = document.querySelector(".modal-info");
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('show');
+      entry.target.classList.add("show");
+      if (entry.target.classList.contains("show-right")) {
+        entry.target.classList.add("fade-right");
+        // console.log("fading")
+      } else if (entry.target.classList.contains("show-up")) {
+        entry.target.classList.add("fade-up");
+        console.log("fading");
+      }
     }
   });
 });
 
-const hiddenElements = document.querySelectorAll('.hidden');
+const hiddenElements = document.querySelectorAll(".hidden");
 hiddenElements.forEach((el) => observer.observe(el));
 
 if (document.body.contains(modal)) {
@@ -26,7 +41,6 @@ if (document.body.contains(modal)) {
   setModalBounds();
 }
 function setModalBounds() {
-  
   modal.addEventListener("click", (e) => {
     const dialogDimensions = modal.getBoundingClientRect();
     if (
@@ -46,7 +60,19 @@ function setModalBounds() {
 // }
 
 class Project {
-  constructor(title, id, projectLink, header, description, repoLink, coverImg) {
+  constructor(
+    type,
+    title,
+    id,
+    projectLink,
+    header,
+    description,
+    repoLink,
+    coverImg,
+    promotionalPackageItems,
+    awards
+  ) {
+    this.type = type;
     this.title = title;
     this.id = id;
     this.projectLink = projectLink;
@@ -54,102 +80,142 @@ class Project {
     this.description = description;
     this.repoLink = repoLink;
     this.coverImg = coverImg;
+    this.promotionalPackageItems = promotionalPackageItems;
+    this.awards = awards;
   }
 }
 
 let culinaryShowdown = new Project(
+  "coding",
   "Culinary Showdown",
   "culinary-showdown",
   "https://ljmarquez.github.io/Culinary-Showdown/",
   "Can You Take On Gordon Ramsay?",
   "This game was built using HTML, CSS, and JavaScript and encompasses all of the topics I have learned in my first semester of West-MEC. It is a typing/adventure game (mostly) complete with audio, interactivity, and just a few bugs. It utilizes the JS canvas, eventlisteners, inputs, arrays, and loops which append elements to the DOM. This is just scraping the surface of what this game covers, but I plan to make my projects more in-depth and entertaining in the future.",
   "https://github.com/LJMarquez/Culinary-Showdown",
-  "showdown-cover.jpg"
+  "showdown-cover.jpg",
+  null,
+  null
 );
 
 let doorsGame = new Project(
+  "coding",
   "Random Doors Game",
   "doors-game",
   "https://ljmarquez.github.io/FNAF-Door-Game/",
   "Will You Survive The Night?",
-  "This game was built using HTML, CSS, and JavaScript and focuses on random number generation to determine the outcome the game. It includes other elements such as keyframe animations and capturing user information from an input.",
+  "This game was built using HTML, CSS, and JavaScript and focuses on random number generation to determine the outcome the game. It includes other elements such as keyframe animations and capturing user info from an input.",
   "https://github.com/LJMarquez/FNAF-Door-Game/tree/main",
-  "fnaf-game-cover.jpg"
+  "fnaf-game-cover.jpg",
+  null,
+  null
 );
 
 let jsCalculator = new Project(
+  "coding",
   "JavaScript Calculator",
   "js-calculator",
   "https://ljmarquez.github.io/Calculator-Project/",
   "Have Fun With Math!",
-  "This game was built using HTML, CSS, and JavaScript and focuses on using conditions to check values and assign the user's inputs accordingly. It utilizes some other elements such as a for loop to create the buttons, flex display, switch cases.",
+  "This game was built using HTML, CSS, and JavaScript and focuses on using conditions to check which button the user pressed to determine which variables will be manipulated. These variables are then put together in an equation to determine the answer of the problem inputted by the user. It utilizes some other elements such as a for loop to create the buttons, flex display, switch cases, etc.",
   "https://github.com/LJMarquez/Calculator-Project/tree/main",
-  "calculator-cover.jpg"
+  "calculator-cover.jpg",
+  null,
+  null
 );
 
 let wordleGame = new Project(
+  "coding",
   "Wordle Game",
   "wordle-game",
   "https://ljmarquez.github.io/Wordle-Game/",
   "Can You Guess The Word?",
   "This game was built using HTML, CSS, and JavaScript and focuses on manipulating strings to check if the user's input (guess) is equivalent to the phrase. Other elements that are utilized are a for each loop to create the inputs, values, and an eventListener to check for everytime the input value is changed and if the value is equal to the phrase.",
   "https://github.com/LJMarquez/Wordle-Game/tree/main",
-  "wordle-game-cover.jpg"
+  "wordle-game-cover.jpg",
+  null,
+  null
 );
 
 let soccerGame = new Project(
+  "coding",
   "2 Player Soccer Game",
   "soccer-game",
   "https://ljmarquez.github.io/Soccer-Game/",
   "GOOOAAALLL!!!",
   "This game was built using HTML, CSS, and JavaScript and focuses on using the canvas element to create shapes which act as the players, ball, and goal. These shapes have logic added to them for when they collide with each other to change the direction and speed of the ball. It utilizes some other elements such as eventListeners for keys on the keyboard, functions to create the game elements, and using random logic to set the speed of the ball.",
   "https://github.com/LJMarquez/Soccer-Game/tree/main",
-  "soccer-game-cover.jpg"
+  "soccer-game-cover.jpg",
+  null,
+  null
 );
 
 let fashunSite = new Project(
+  "coding",
   "Fashun Shopping Site",
   "fashun-site",
   "https://ljmarquez.github.io/Fashun-Site/",
   "What's Your Style?",
   "This project was built using HTML, CSS, and JavaScript and focuses on utilizing media queries to make the website fit on multiple different screen resolutions. The media queries are used in the CSS to manipulate your HTML in different ways. It also utilizes :nth child in CSS to capture a specific child in a parent element containing multiple nested elements.",
   "https://github.com/LJMarquez/Fashun-Site/tree/main",
-  "fashun-cover.jpg"
+  "fashun-cover.jpg",
+  null,
+  null
 );
 
 let novatechSite = new Project(
+  "coding",
   "NovaTech Job Site",
   "novatech-site",
   "https://ljmarquez.github.io/FBLA-State/",
   "Find Your Dream Job!",
   "This was the first project I developed that was a little bit more advanced. It involved stringing together multiple files, running logic gates to make sure ceratin page elements only loaded on certain pages, storing and retrieving data across multiple files using local storage, procedural js to create page elements, and much much more! This project also won me first place at my FBLA Regional competition and third place at the state competition. I talk a little bit more about FBLA on my <a class='about-link' href='about.html'>about page!</a>",
   "https://github.com/LJMarquez/FBLA-State/tree/final",
-  "novatech-cover.jpg"
+  "novatech-cover.jpg",
+  null,
+  ["gold", "bronze"]
 );
 
 let crocGame = new Project(
+  "coding",
   "Croc-O-Rena",
   "croc-o-rena-game",
   "https://ljmarquez.github.io/Phaser-Game/",
   "Be the Last One Standing!",
   "This project was my first experience using a JavaScript library to develop an application. This game was built using Phaser 3, a JavaScript library that specializes in making web based games. This is a shoot 'em up game where your goal is to make it past all of the waves and beat the boss at the end. It still has a few bugs but I would say is pretty fun! I won't bore you to death about how I made it and its intricacies but if you would like to know more just <a class='about-link' href='contact.html'>reach out to me!</a>",
   "https://github.com/LJMarquez/Phaser-Game",
-  "croc-o-rena-cover.jpg"
+  "croc-o-rena-cover.jpg",
+  null,
+  null
 );
 
-let myCodingProjects = [
+let copperCanyonFilmFest = new Project(
+  "graphic design",
+  "AZ Film Festival",
+  "copper-canyon-film-fest",
+  "logo.pdf",
+  "Lights, Camera, Action!",
+  "This project was my first experience using a JavaScript library to develop an application. This game was built using Phaser 3, a JavaScript library that specializes in making web based games. This is a shoot 'em up game where your goal is to make it past all of the waves and beat the boss at the end. It still has a few bugs but I would say is pretty fun! I won't bore you to death about how I made it and its intricacies but if you would like to know more just <a class='about-link' href='contact.html'>reach out to me!</a>",
+  null,
+  "logo.jpg",
+  ["flyer.jpg"],
+  ["gold"]
+);
+
+let myProjects = [
+  novatechSite,
   culinaryShowdown,
-  doorsGame,
+  crocGame,
+  fashunSite,
   jsCalculator,
   wordleGame,
   soccerGame,
-  fashunSite,
-  novatechSite,
-  crocGame,
+  doorsGame,
+  copperCanyonFilmFest,
 ];
 
-if (document.body.contains(codingProjectContainer)) {
-  myCodingProjects.forEach((project) => {
+if (document.body.contains(codingProjectContainer) || document.body.contains(fblaProjectContainer)) {
+  myProjects.forEach((project) => {
     let projectDiv = document.createElement("div");
     projectDiv.classList.add("project-wrapper");
 
@@ -162,6 +228,27 @@ if (document.body.contains(codingProjectContainer)) {
     titleWrapper.appendChild(title);
     projectDiv.appendChild(titleWrapper);
 
+    if (project.awards !== null) {
+      let awardIconWrapper = document.createElement("div");
+      awardIconWrapper.classList.add("award-icon-wrapper");
+      awardIconWrapper.addEventListener("click", (e) => {
+        document.location.href = "award-projects.html";
+      });
+      project.awards.forEach((award) => {
+        let awardIcon = document.createElement("i");
+        awardIcon.classList.add("fa-solid", "fa-medal");
+        if (award == "gold") {
+          awardIcon.style.color = "gold";
+        } else if (award == "silver") {
+          awardIcon.style.color = "silver";
+        } else {
+          awardIcon.style.color = "#d47230";
+        }
+        awardIconWrapper.appendChild(awardIcon);
+      });
+      titleWrapper.appendChild(awardIconWrapper);
+    }
+
     let content = document.createElement("div");
     content.classList.add("content");
 
@@ -170,13 +257,24 @@ if (document.body.contains(codingProjectContainer)) {
 
     let projectPageLink = document.createElement("a");
     projectPageLink.classList.add("image-grow");
-    projectPageLink.href = `${project.projectLink}`;
+    if (project.type == "coding") {
+      projectPageLink.href = `${project.projectLink}`;
+    } else {
+      projectPageLink.href = `./assets/graphic-design-projects/${project.id}/${project.projectLink}`;
+    }
     projectPageLink.target = "_blank";
 
     let coverImg = document.createElement("img");
-    coverImg.classList.add("project-cover-image");
-    coverImg.src = `./assets/project-covers/${project.coverImg}`;
-    coverImg.alt = `Landing page for Leo's ${project.title} project.`;
+
+    if (project.type == "coding") {
+      coverImg.classList.add("code-project-cover-image");
+      coverImg.src = `./assets/project-covers/${project.coverImg}`;
+      coverImg.alt = `Landing page for Leo's ${project.title} project.`;
+    } else {
+      coverImg.classList.add("gd-project-cover-image");
+      coverImg.src = `./assets/graphic-design-projects/${project.id}/${project.coverImg}`;
+      coverImg.alt = `Logo for Leo's ${project.title} project.`;
+    }
 
     projectPageLink.appendChild(coverImg);
     projectImageDiv.appendChild(projectPageLink);
@@ -192,15 +290,15 @@ if (document.body.contains(codingProjectContainer)) {
     descriptionDiv.appendChild(projectHeader);
     descriptionDiv.appendChild(projectDescription);
 
-    if (project.description.length > 280) {
-      projectDescription.innerHTML = project.description.slice(0, 275);
+    if (project.description.length > 220) {
+      projectDescription.innerHTML = project.description.slice(0, 220);
       let dots = document.createElement("span");
       dots.innerHTML = " . . .";
       descriptionDiv.appendChild(dots);
 
       let more = document.createElement("span");
       more.innerHTML = project.description.slice(
-        275,
+        220,
         project.description.length
       );
       more.style.display = "none";
@@ -229,27 +327,95 @@ if (document.body.contains(codingProjectContainer)) {
     content.appendChild(descriptionDiv);
     projectDiv.appendChild(content);
 
-    let projectRepoDiv = document.createElement("div");
-    projectRepoDiv.classList.add("project-link");
-    let repoHeader = document.createElement("p");
-    repoHeader.innerHTML = "Check out the code here:";
+    if (project.repoLink === null) {
+      let projectPackageDiv = document.createElement("div");
+      projectPackageDiv.classList.add("project-link");
+      let projectPackageHeaderWrapper = document.createElement("div");
+      projectPackageHeaderWrapper.classList.add('package-header-wrapper');
+      let projectPackageHeader = document.createElement("p");
+      projectPackageHeader.innerHTML = "Check out the full project here:";
+      projectPackageHeader.style.display = "inline-block";
+      projectPackageHeaderWrapper.appendChild(projectPackageHeader);
+  
+      let arrowOpened = false;
+      let revealItemsIcon = document.createElement('i');
+      revealItemsIcon.classList.add("fa-solid", "fa-circle-chevron-right", "reveal-projects-icon");
+      revealItemsIcon.addEventListener("click", (e) => {
+        arrowOpened = !arrowOpened;
+        if (arrowOpened) {
+          e.target.style.animation = "rotateClose 0.5s ease forwards"
+          projectPackageDiv.style.animation = "revealPackage 0.75s ease forwards";
+        } else {
+          e.target.style.animation = "rotateOpen 0.5s ease forwards"
+          projectPackageDiv.style.animation = "hidePackage 0.75s ease forwards";
+        }
+      });
+      
+      let packageItemDiv = document.createElement('div');
+      packageItemDiv.classList.add('package-item-container');
 
-    let repoLink = document.createElement("a");
-    repoLink.innerHTML = `${project.title} Repository`;
-    repoLink.classList.add("link-grow");
-    repoLink.target = "_blank";
-    repoLink.href = `${project.repoLink}`;
+      project.promotionalPackageItems.forEach((promoItem) => {
+        let promoItemContainer = document.createElement('div');
+        promoItemContainer.classList.add();
+        let promoItemImg = document.createElement('a');
+        promoItemImg.href = `${promoItem.pdf}`;
+        promoItemImg.classList.add('promo-item-img');
+        promoItemImg.style.backgroundImage = `./assets${promoItem.img}`;
 
-    projectRepoDiv.appendChild(repoHeader);
-    projectRepoDiv.appendChild(repoLink);
+        
+      });
 
-    projectDiv.appendChild(projectRepoDiv);
+      // <i class="fa-solid fa-circle-chevron-right"></i>
 
-    codingProjectContainer.appendChild(projectDiv);
+      // let repoLink = document.createElement("a");
+      // repoLink.innerHTML = `${project.title} Repository`;
+      // repoLink.classList.add("link-grow");
+      // repoLink.target = "_blank";
+      // repoLink.href = `${project.repoLink}`;
+  
+      projectPackageHeaderWrapper.appendChild(revealItemsIcon);
+      projectPackageDiv.appendChild(projectPackageHeaderWrapper);
+  
+      projectDiv.appendChild(projectPackageDiv);
+    } else {
+      let projectRepoDiv = document.createElement("div");
+      projectRepoDiv.classList.add("project-link");
+      let repoHeader = document.createElement("p");
+      repoHeader.innerHTML = "Check out the code here:";
+  
+      let repoLink = document.createElement("a");
+      repoLink.innerHTML = `${project.title} Repository`;
+      repoLink.classList.add("link-grow");
+      repoLink.target = "_blank";
+      repoLink.href = `${project.repoLink}`;
+  
+      projectRepoDiv.appendChild(repoHeader);
+      projectRepoDiv.appendChild(repoLink);
+  
+      projectDiv.appendChild(projectRepoDiv);
+    }
+
+    if (document.body.contains(fblaProjectContainer) && project.awards !== null) {
+      if (project.type == "coding") {
+        fblaProjectContainer.appendChild(projectDiv);
+      } else {
+        skillsUSAProjectContainer.appendChild(projectDiv);
+      }
+    } else if (document.body.contains(codingProjectContainer) && project.type == "coding") {
+      codingProjectContainer.appendChild(projectDiv);
+    } else if (document.body.contains(graphicDesignProjectContainer) && project.type == "graphic design") {
+      graphicDesignProjectContainer.appendChild(projectDiv);
+    }
   });
 }
 
-let personalitiesArray = ["Developer", "Designer", "Creator", "Programmer", "Learner"];
+let personalitiesArray = [
+  "Developer",
+  "Designer",
+  "Creator",
+  "Programmer",
+  "Learner",
+];
 
 let personalityIndex = 0;
 let animIndex = 0;
@@ -392,9 +558,9 @@ if (document.body.contains(slideshowContainer)) {
 
         moreButton.addEventListener("click", (e) => {
           setModalBounds();
-            dots.style.display = "none";
-            moreButton.style.display = "none";
-            more.style.display = "inline";
+          dots.style.display = "none";
+          moreButton.style.display = "none";
+          more.style.display = "inline";
         });
       } else {
         modalInfo.innerHTML = `${project.description}`;
@@ -411,48 +577,62 @@ if (document.body.contains(slideshowContainer)) {
     slideshowContainer.appendChild(slideDiv);
     featuredProjectSlides.push(slideDiv);
   });
-}
 
-let featuredIndex = 0;
-let activeSlide = featuredProjectSlides[featuredIndex];
-activeSlide.classList.remove("inactive-slide");
+  let featuredIndex = 0;
+  let activeSlide = featuredProjectSlides[featuredIndex];
+  activeSlide.classList.remove("inactive-slide");
 
-let featuredArrows = document.querySelectorAll(".featured-arrow");
-featuredArrows.forEach((arrow) => {
-  arrow.addEventListener("click", () => {
-    let direction;
-    arrow.style.animation = "none";
-    arrow.offsetHeight;
-    arrow.style.animation = "bounce .3s ease";
-    if (arrow.classList.contains("next")) {
-      featuredIndex++;
-      activeSlide.style.animation = "exitRight 0.75s ease-in forwards";
-      direction = "right";
-    } else {
-      featuredIndex--;
-      activeSlide.style.animation = "exitLeft 0.75s ease-in forwards";
-      direction = "left";
-    }
-    if (featuredIndex < 0) {
-      featuredIndex = featuredProjectSlides.length - 1;
-    }
-    if (featuredIndex > featuredProjectSlides.length - 1) {
-      featuredIndex = 0;
-    }
-    activeSlide = featuredProjectSlides[featuredIndex];
-    activeSlide.classList.remove("inactive-slide");
-    slideEnter(direction);
+  let featuredArrows = document.querySelectorAll(".featured-arrow");
+  featuredArrows.forEach((arrow) => {
+    arrow.addEventListener("click", () => {
+      let direction;
+      arrow.style.animation = "none";
+      arrow.offsetHeight;
+      arrow.style.animation = "bounce .3s ease";
+      if (arrow.classList.contains("next")) {
+        featuredIndex++;
+        activeSlide.style.animation = "exitRight 0.75s ease-in forwards";
+        direction = "right";
+      } else {
+        featuredIndex--;
+        activeSlide.style.animation = "exitLeft 0.75s ease-in forwards";
+        direction = "left";
+      }
+      if (featuredIndex < 0) {
+        featuredIndex = featuredProjectSlides.length - 1;
+      }
+      if (featuredIndex > featuredProjectSlides.length - 1) {
+        featuredIndex = 0;
+      }
+      activeSlide = featuredProjectSlides[featuredIndex];
+      activeSlide.classList.remove("inactive-slide");
+      slideEnter(direction);
+    });
   });
-});
-
-function slideEnter(direction) {
-  if (direction == "left") {
-    activeSlide.style.animation = "enterLeft 0.75s ease-out forwards";
-  } else {
-    activeSlide.style.animation = "enterRight 0.75s ease-out forwards";
+  
+  function slideEnter(direction) {
+    if (direction == "left") {
+      activeSlide.style.animation = "enterLeft 0.75s ease-out forwards";
+    } else {
+      activeSlide.style.animation = "enterRight 0.75s ease-out forwards";
+    }
   }
 }
 
 function sendEmail() {
-  window.open('mailto:marquez.leo100@gmail.com');
+  window.open("mailto:marquez.leo100@gmail.com");
+}
+
+if (document.body.contains(codeProjects)) {
+  codeProjects.addEventListener("click", (e) => {
+    document.location.href = "code-projects.html";
+  });
+
+  awardProjects.addEventListener("click", (e) => {
+    document.location.href = "award-projects.html";
+  });
+
+  gdProjects.addEventListener("click", (e) => {
+    document.location.href = "graphic-design-projects.html";
+  });
 }

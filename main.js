@@ -198,7 +198,7 @@ let copperCanyonFilmFest = new Project(
   "This project was my first experience using a JavaScript library to develop an application. This game was built using Phaser 3, a JavaScript library that specializes in making web based games. This is a shoot 'em up game where your goal is to make it past all of the waves and beat the boss at the end. It still has a few bugs but I would say is pretty fun! I won't bore you to death about how I made it and its intricacies but if you would like to know more just <a class='about-link' href='contact.html'>reach out to me!</a>",
   null,
   "logo.jpg",
-  ["flyer.jpg"],
+  [{title: "Flyer", img: "flyer.jpg", link: "flyer.pdf"}],
   ["gold"]
 );
 
@@ -218,6 +218,9 @@ if (document.body.contains(codingProjectContainer) || document.body.contains(fbl
   myProjects.forEach((project) => {
     let projectDiv = document.createElement("div");
     projectDiv.classList.add("project-wrapper");
+    if (project.type === "graphic design") {
+      projectDiv.style.maxHeight = "60vh";
+    }
 
     let titleWrapper = document.createElement("div");
     titleWrapper.classList.add("project-title");
@@ -311,10 +314,14 @@ if (document.body.contains(codingProjectContainer) || document.body.contains(fbl
 
       moreButton.addEventListener("click", (e) => {
         if (dots.style.display === "none") {
+          projectDiv.style.maxHeight = "70vh";
+          // projectDiv.style.animation = "hideMore 1s ease forwards";
           dots.style.display = "inline";
           moreButton.innerHTML = "More";
           more.style.display = "none";
         } else {
+          projectDiv.style.maxHeight = "1000vh";
+          // projectDiv.style.animation = "revealMore 1s ease forwards";
           dots.style.display = "none";
           moreButton.innerHTML = "Less";
           more.style.display = "inline";
@@ -327,9 +334,9 @@ if (document.body.contains(codingProjectContainer) || document.body.contains(fbl
     content.appendChild(descriptionDiv);
     projectDiv.appendChild(content);
 
-    if (project.repoLink === null) {
+    if (project.type === "graphic design") {
       let projectPackageDiv = document.createElement("div");
-      projectPackageDiv.classList.add("project-link");
+      projectPackageDiv.classList.add("project-package-div");
       let projectPackageHeaderWrapper = document.createElement("div");
       projectPackageHeaderWrapper.classList.add('package-header-wrapper');
       let projectPackageHeader = document.createElement("p");
@@ -341,42 +348,44 @@ if (document.body.contains(codingProjectContainer) || document.body.contains(fbl
       let revealItemsIcon = document.createElement('i');
       revealItemsIcon.classList.add("fa-solid", "fa-circle-chevron-right", "reveal-projects-icon");
       revealItemsIcon.addEventListener("click", (e) => {
-        arrowOpened = !arrowOpened;
         if (arrowOpened) {
           e.target.style.animation = "rotateClose 0.5s ease forwards"
-          projectPackageDiv.style.animation = "revealPackage 0.75s ease forwards";
+          // projectPackageDiv.style.animation = "hidePackage 0.75s ease forwards";
+          projectDiv.style.animation = "hideMore 1s ease forwards";
         } else {
           e.target.style.animation = "rotateOpen 0.5s ease forwards"
-          projectPackageDiv.style.animation = "hidePackage 0.75s ease forwards";
+          // projectPackageDiv.style.animation = "revealPackage 0.75s ease forwards";
+          projectDiv.style.animation = "revealMore 1s ease forwards";
         }
+        arrowOpened = !arrowOpened;
       });
       
-      let packageItemDiv = document.createElement('div');
-      packageItemDiv.classList.add('package-item-container');
+      // let packageItemDiv = document.createElement('div');
+      // packageItemDiv.classList.add('package-item-container');
 
-      project.promotionalPackageItems.forEach((promoItem) => {
-        let promoItemContainer = document.createElement('div');
-        promoItemContainer.classList.add();
-        let promoItemImg = document.createElement('a');
-        promoItemImg.href = `${promoItem.pdf}`;
-        promoItemImg.classList.add('promo-item-img');
-        promoItemImg.style.backgroundImage = `./assets${promoItem.img}`;
-
-        
-      });
-
-      // <i class="fa-solid fa-circle-chevron-right"></i>
-
-      // let repoLink = document.createElement("a");
-      // repoLink.innerHTML = `${project.title} Repository`;
-      // repoLink.classList.add("link-grow");
-      // repoLink.target = "_blank";
-      // repoLink.href = `${project.repoLink}`;
-  
       projectPackageHeaderWrapper.appendChild(revealItemsIcon);
       projectPackageDiv.appendChild(projectPackageHeaderWrapper);
-  
       projectDiv.appendChild(projectPackageDiv);
+
+      project.promotionalPackageItems.forEach((promoItem) => {
+        let promoItemDiv = document.createElement('div');
+        promoItemDiv.classList.add('promo-item-div');
+        promoItemDiv.addEventListener("click", () => {
+          window.open(promoItem.link, "_blank");
+        });
+        let promoItemImg = document.createElement('div');
+        promoItemImg.classList.add('promo-item-img');
+        promoItemImg.style.backgroundImage = `./assets/graphic-design-projects/${project.id}/${promoItem.img}`;
+        let promoItemTitle = document.createElement('p');
+        promoItemTitle.classList.add('promo-item-title');
+        promoItemTitle.innerHTML = `${promoItem.title}`;
+
+        promoItemDiv.appendChild(promoItemImg);
+        promoItemDiv.appendChild(promoItemTitle);
+        // packageItemDiv.appendChild(promoItemDiv);
+        projectPackageDiv.appendChild(promoItemDiv);
+      });
+      
     } else {
       let projectRepoDiv = document.createElement("div");
       projectRepoDiv.classList.add("project-link");
@@ -455,8 +464,8 @@ function typePersonality() {
 let featuredProjectsArray = [
   novatechSite,
   crocGame,
-  // skillsRegional,
-  // skillsState
+  copperCanyonFilmFest,
+  // skillsRegional
 ];
 
 let featuredProjectSlides = [];
@@ -519,21 +528,11 @@ if (document.body.contains(slideshowContainer)) {
     dot3.appendChild(plusIcon);
     dot3.addEventListener("click", () => {
       window.open(project.projectLink, "_blank");
-      // let direction;
-      //   featuredIndex++;
-      //   activeSlide.style.animation = "exitRight 0.75s ease-in forwards";
-      //   direction = 'right';
-      // if (featuredIndex > featuredProjectSlides.length - 1) {
-      //   featuredIndex = 0;
-      // }
-      // activeSlide = featuredProjectSlides[featuredIndex];
-      // activeSlide.classList.remove('inactive-slide');
-      // slideEnter(direction);
     });
 
     let infoIcon = document.createElement("i");
     infoIcon.classList.add("fa-solid", "fa-circle-info", "info-icon");
-    infoIcon.addEventListener("click", (e) => {
+    infoIcon.addEventListener("click", () => {
       modal.showModal();
       modalHeader.innerHTML = `${project.title}`;
 

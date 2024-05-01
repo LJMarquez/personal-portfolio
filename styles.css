@@ -302,6 +302,38 @@ a.link-grow:hover {
   margin-left: 1rem;
 }
 
+.promo-item-div {
+  /* margin: auto; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  transition: transform 0.5s;
+  width: max-content;
+  margin-left: 33%;
+}
+
+.promo-item-div:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.promo-item-img {
+  height: 5vw;
+  width: 5vw;
+  background-color: white;
+  border-radius: 1vw;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 1vw;
+}
+
+.promo-item-title {
+  margin-left: 1vw;
+}
+
 .more-button {
   color: #6bb6f5;
   display: inline;
@@ -727,35 +759,37 @@ footer > p {
 
 @keyframes revealMore {
   0% {
-    max-height: 70vh;
+    /* max-height: 70vh; */
+    max-height: max-content;
   }
   100% {
-    max-height: 1000vh;
+    max-height: 300vh;
   }
 }
 @keyframes hideMore {
   0% {
-    max-height: 1000vh;
+    max-height: 300vh;
   }
   100% {
-    max-height: 70vh;
+    /* max-height: 70vh; */
+    max-height: max-content;
   }
 }
 
 @keyframes revealPackage {
   0% {
-    max-height: 5rem;
+    max-height: 10vh;
   }
   100% {
-    max-height: 100rem;
+    max-height: 100vh;
   }
 }
 @keyframes hidePackage {
   0% {
-    max-height: 100rem;
+    max-height: 100vh;
   }
   100% {
-    max-height: 5rem;
+    max-height: 10vh;
   }
 }
 

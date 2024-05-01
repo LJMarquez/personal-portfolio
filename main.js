@@ -1,5 +1,9 @@
-const codingProjectContainer = document.getElementById("coding-project-container");
-const graphicDesignProjectContainer = document.getElementById("graphic-design-project-container");
+const codingProjectContainer = document.getElementById(
+  "coding-project-container"
+);
+const graphicDesignProjectContainer = document.getElementById(
+  "graphic-design-project-container"
+);
 
 const personalitiesSpan = document.getElementById("personalities-span");
 const slideshowContainer = document.getElementById("slideshow-container");
@@ -8,8 +12,10 @@ const codeProjects = document.getElementById("code-projects");
 const awardProjects = document.getElementById("award-projects");
 const gdProjects = document.getElementById("gd-projects");
 
-const fblaProjectContainer = document.getElementById('fbla-project-container');
-const skillsUSAProjectContainer = document.getElementById('skillsusa-project-container');
+const fblaProjectContainer = document.getElementById("fbla-project-container");
+const skillsUSAProjectContainer = document.getElementById(
+  "skillsusa-project-container"
+);
 
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".modal-close");
@@ -169,7 +175,7 @@ let novatechSite = new Project(
   "novatech-site",
   "https://ljmarquez.github.io/FBLA-State/",
   "Find Your Dream Job!",
-  "This was the first project I developed that was a little bit more advanced. It involved stringing together multiple files, running logic gates to make sure ceratin page elements only loaded on certain pages, storing and retrieving data across multiple files using local storage, procedural js to create page elements, and much much more! This project also won me first place at my FBLA Regional competition and third place at the state competition. I talk a little bit more about FBLA on my <a class='about-link' href='about.html'>about page!</a>",
+  "I developed this project for FBLA, specifically the website coding and development competition. This project won first in the regional competition and third in the state competition! This was the first project I developed that was a little bit more advanced. It involved stringing together multiple files, running logic gates to make sure ceratin page elements only loaded on certain pages, storing and retrieving data across multiple files using local storage, procedural js to create page elements, and much much more! This project also won me first place at my FBLA Regional competition and third place at the state competition. I talk a little bit more about FBLA on my <a class='about-link' href='about.html'>about page!</a>",
   "https://github.com/LJMarquez/FBLA-State/tree/final",
   "novatech-cover.jpg",
   null,
@@ -195,10 +201,10 @@ let copperCanyonFilmFest = new Project(
   "copper-canyon-film-fest",
   "logo.pdf",
   "Lights, Camera, Action!",
-  "This project was my first experience using a JavaScript library to develop an application. This game was built using Phaser 3, a JavaScript library that specializes in making web based games. This is a shoot 'em up game where your goal is to make it past all of the waves and beat the boss at the end. It still has a few bugs but I would say is pretty fun! I won't bore you to death about how I made it and its intricacies but if you would like to know more just <a class='about-link' href='contact.html'>reach out to me!</a>",
+  "I created this project at the SkillsUSA state competition in Arizona. This project won first place out of 80+ contestants! I don't quite remember the entire design brief but it went something along the lines of this. There was a film festival being held in Flagstaff AZ called the Copper Canyon Film Festival. The film festival caters to all movie lovers providing them a with a place where they can share their love of movies with others. At the event, there would be movie showcases, movie watching parties, and presentations where film directors get to share their movie making experiences. We were tasked with developing a logo and making a flyer for the client and here is the work I created! I tried making the flyer colorful and vibrant to stand out and relay the idea of the film festival being fun, entertaining, and for everyone to enjoy. For the logo, instead of going with a desert theme I went with a color scheme and symbolism that related more to flagstaff, with the blues, the mountains, and the trees.",
   null,
   "logo.jpg",
-  [{title: "Flyer", img: "flyer.jpg", link: "flyer.pdf"}],
+  [{ title: "Flyer", img: "flyer.jpg", link: "flyer.pdf" }],
   ["gold"]
 );
 
@@ -214,7 +220,10 @@ let myProjects = [
   copperCanyonFilmFest,
 ];
 
-if (document.body.contains(codingProjectContainer) || document.body.contains(fblaProjectContainer)) {
+if (
+  document.body.contains(codingProjectContainer) ||
+  document.body.contains(fblaProjectContainer)
+) {
   myProjects.forEach((project) => {
     let projectDiv = document.createElement("div");
     projectDiv.classList.add("project-wrapper");
@@ -314,14 +323,14 @@ if (document.body.contains(codingProjectContainer) || document.body.contains(fbl
 
       moreButton.addEventListener("click", (e) => {
         if (dots.style.display === "none") {
-          projectDiv.style.maxHeight = "70vh";
-          // projectDiv.style.animation = "hideMore 1s ease forwards";
+          // projectDiv.style.maxHeight = "70vh";
+          projectDiv.style.animation = "hideMore 1s ease forwards";
           dots.style.display = "inline";
           moreButton.innerHTML = "More";
           more.style.display = "none";
         } else {
-          projectDiv.style.maxHeight = "1000vh";
-          // projectDiv.style.animation = "revealMore 1s ease forwards";
+          // projectDiv.style.maxHeight = "300vh";
+          projectDiv.style.animation = "revealMore 1s ease forwards";
           dots.style.display = "none";
           moreButton.innerHTML = "Less";
           more.style.display = "inline";
@@ -338,28 +347,20 @@ if (document.body.contains(codingProjectContainer) || document.body.contains(fbl
       let projectPackageDiv = document.createElement("div");
       projectPackageDiv.classList.add("project-package-div");
       let projectPackageHeaderWrapper = document.createElement("div");
-      projectPackageHeaderWrapper.classList.add('package-header-wrapper');
+      projectPackageHeaderWrapper.classList.add("package-header-wrapper");
       let projectPackageHeader = document.createElement("p");
       projectPackageHeader.innerHTML = "Check out the full project here:";
       projectPackageHeader.style.display = "inline-block";
       projectPackageHeaderWrapper.appendChild(projectPackageHeader);
-  
+
       let arrowOpened = false;
-      let revealItemsIcon = document.createElement('i');
-      revealItemsIcon.classList.add("fa-solid", "fa-circle-chevron-right", "reveal-projects-icon");
-      revealItemsIcon.addEventListener("click", (e) => {
-        if (arrowOpened) {
-          e.target.style.animation = "rotateClose 0.5s ease forwards"
-          // projectPackageDiv.style.animation = "hidePackage 0.75s ease forwards";
-          projectDiv.style.animation = "hideMore 1s ease forwards";
-        } else {
-          e.target.style.animation = "rotateOpen 0.5s ease forwards"
-          // projectPackageDiv.style.animation = "revealPackage 0.75s ease forwards";
-          projectDiv.style.animation = "revealMore 1s ease forwards";
-        }
-        arrowOpened = !arrowOpened;
-      });
-      
+      let revealItemsIcon = document.createElement("i");
+      revealItemsIcon.classList.add(
+        "fa-solid",
+        "fa-circle-chevron-right",
+        "reveal-projects-icon"
+      );
+
       // let packageItemDiv = document.createElement('div');
       // packageItemDiv.classList.add('package-item-container');
 
@@ -368,51 +369,73 @@ if (document.body.contains(codingProjectContainer) || document.body.contains(fbl
       projectDiv.appendChild(projectPackageDiv);
 
       project.promotionalPackageItems.forEach((promoItem) => {
-        let promoItemDiv = document.createElement('div');
-        promoItemDiv.classList.add('promo-item-div');
+        let promoItemDiv = document.createElement("div");
+        promoItemDiv.classList.add("promo-item-div");
         promoItemDiv.addEventListener("click", () => {
           window.open(promoItem.link, "_blank");
         });
-        let promoItemImg = document.createElement('div');
-        promoItemImg.classList.add('promo-item-img');
-        promoItemImg.style.backgroundImage = `./assets/graphic-design-projects/${project.id}/${promoItem.img}`;
-        let promoItemTitle = document.createElement('p');
-        promoItemTitle.classList.add('promo-item-title');
+        let promoItemImg = document.createElement("div");
+        promoItemImg.classList.add("promo-item-img");
+        promoItemImg.style.backgroundImage = `url(./assets/graphic-design-projects/${project.id}/${promoItem.img})`;
+        let promoItemTitle = document.createElement("p");
+        promoItemTitle.classList.add("promo-item-title");
         promoItemTitle.innerHTML = `${promoItem.title}`;
 
         promoItemDiv.appendChild(promoItemImg);
         promoItemDiv.appendChild(promoItemTitle);
-        // packageItemDiv.appendChild(promoItemDiv);
+        // packageItemDiv.appendChild(promoItemDiv);*()
         projectPackageDiv.appendChild(promoItemDiv);
       });
-      
+
+      revealItemsIcon.addEventListener("click", (e) => {
+        if (arrowOpened) {
+          e.target.style.animation = "rotateClose 0.5s ease forwards";
+          projectPackageDiv.style.animation = "hidePackage 0.75s ease forwards";
+          projectDiv.style.animation = "hideMore 1s ease forwards";
+        } else {
+          e.target.style.animation = "rotateOpen 0.5s ease forwards";
+          projectPackageDiv.style.animation = "revealPackage 0.75s ease forwards";
+          projectDiv.style.animation = "revealMore 1s ease forwards";
+        }
+        arrowOpened = !arrowOpened;
+      });
+
     } else {
       let projectRepoDiv = document.createElement("div");
       projectRepoDiv.classList.add("project-link");
       let repoHeader = document.createElement("p");
       repoHeader.innerHTML = "Check out the code here:";
-  
+
       let repoLink = document.createElement("a");
       repoLink.innerHTML = `${project.title} Repository`;
       repoLink.classList.add("link-grow");
       repoLink.target = "_blank";
       repoLink.href = `${project.repoLink}`;
-  
+
       projectRepoDiv.appendChild(repoHeader);
       projectRepoDiv.appendChild(repoLink);
-  
+
       projectDiv.appendChild(projectRepoDiv);
     }
 
-    if (document.body.contains(fblaProjectContainer) && project.awards !== null) {
+    if (
+      document.body.contains(fblaProjectContainer) &&
+      project.awards !== null
+    ) {
       if (project.type == "coding") {
         fblaProjectContainer.appendChild(projectDiv);
       } else {
         skillsUSAProjectContainer.appendChild(projectDiv);
       }
-    } else if (document.body.contains(codingProjectContainer) && project.type == "coding") {
+    } else if (
+      document.body.contains(codingProjectContainer) &&
+      project.type == "coding"
+    ) {
       codingProjectContainer.appendChild(projectDiv);
-    } else if (document.body.contains(graphicDesignProjectContainer) && project.type == "graphic design") {
+    } else if (
+      document.body.contains(graphicDesignProjectContainer) &&
+      project.type == "graphic design"
+    ) {
       graphicDesignProjectContainer.appendChild(projectDiv);
     }
   });
@@ -485,18 +508,27 @@ if (document.body.contains(slideshowContainer)) {
 
     let projectPageLink = document.createElement("a");
     projectPageLink.classList.add("image-grow", "slide-img-wrapper");
-    projectPageLink.href = `${project.projectLink}`;
+    if (project.type === "coding") {
+      projectPageLink.href = `${project.projectLink}`;
+    } else {
+      projectPageLink.href = `./assets/graphic-design-projects/${project.id}/${project.projectLink}`;
+    }
     projectPageLink.target = "_blank";
 
     let coverImg = document.createElement("img");
     coverImg.classList.add("slide-img");
-    coverImg.src = `./assets/project-covers/${project.coverImg}`;
-    coverImg.alt = `Landing page for Leo's ${project.title} project.`;
+
+    if (project.type === "coding") {
+      coverImg.src = `./assets/project-covers/${project.coverImg}`;
+      coverImg.alt = `Landing page for Leo's ${project.title} project.`;
+    } else {
+      coverImg.src = `./assets/graphic-design-projects/${project.id}/${project.coverImg}`;
+      coverImg.alt = `Logo for Leo's ${project.title} project.`;
+    }
 
     projectPageLink.appendChild(coverImg);
 
     let dot1 = document.createElement("div");
-    // <i class="fa-solid fa-xmark"></i>
     dot1.classList.add("dot");
     dot1.style.left = "4%";
     dot1.style.backgroundColor = "red";
@@ -608,7 +640,7 @@ if (document.body.contains(slideshowContainer)) {
       slideEnter(direction);
     });
   });
-  
+
   function slideEnter(direction) {
     if (direction == "left") {
       activeSlide.style.animation = "enterLeft 0.75s ease-out forwards";

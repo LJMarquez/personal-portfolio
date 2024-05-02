@@ -208,6 +208,19 @@ let copperCanyonFilmFest = new Project(
   ["gold"]
 );
 
+let chameleonDesigns = new Project(
+  "graphic design",
+  "Chameleon Designs Advertising",
+  "chameleon-designs",
+  "logo.pdf",
+  "Crafting Your Vision into Colorful Reality!",
+  "In this project, me and three other people were put in a group and tasked with making a mock up graphics advertising company. We went through multiple steps to procure the final outcome but I'll briefly lay out the steps. We assigned roles to each member of the group and defined our target audience, our mission, company name, slogan, etc. After that we came up with multiple ideas logos and narrowed it down to the one I made and made multiple variations of it. ",
+  null,
+  "logo.jpg",
+  [{ title: "All Logos", img: "all-logos.jpg", link: "all-logos.pdf" }, { title: "3D Office Renders", img: "floorplan.png", link: "office-renders.pdf" }, { title: "Social Media Ad", img: "social-media-ad.jpg", link: "social-media-ad.pdf" }, { title: "Full Promo Package", img: "logo.jpg", link: "full-package.pdf" }],
+  ["gold"]
+);
+
 let myProjects = [
   novatechSite,
   culinaryShowdown,
@@ -218,10 +231,12 @@ let myProjects = [
   soccerGame,
   doorsGame,
   copperCanyonFilmFest,
+  chameleonDesigns,
 ];
 
 if (
   document.body.contains(codingProjectContainer) ||
+  document.body.contains(graphicDesignProjectContainer) ||
   document.body.contains(fblaProjectContainer)
 ) {
   myProjects.forEach((project) => {

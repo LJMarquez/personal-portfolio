@@ -214,11 +214,11 @@ let chameleonDesigns = new Project(
   "chameleon-designs",
   "logo.pdf",
   "Crafting Your Vision into Colorful Reality!",
-  "In this project, me and three other people were put in a group and tasked with making a mock up graphics advertising company. We went through multiple steps to procure the final outcome but I'll briefly lay out the steps. We assigned roles to each member of the group and defined our target audience, our mission, company name, slogan, etc. After that we came up with multiple ideas logos and narrowed it down to the one I made and made multiple variations of it. ",
+  "In this project, me and three other people were put in a group and tasked with making a mock up graphics advertising company. We went through multiple steps to procure the final outcome but I'll briefly lay out the steps. We assigned roles to each member of the group and defined our target audience, our mission, company name, slogan, etc. After that we came up with multiple ideas logos and narrowed it down to the one I made and made multiple variations of it. Then we were tasked with designing an office space and the costs of rent and running our business (consumables, tech, etc). Then we developed a promotional package including business cards, letterheads, etc. Throughout the entire process we wrote up memos to communicate with our client (our teacher) to show us what communication looks like in the professional world.",
   null,
   "logo.jpg",
   [{ title: "All Logos", img: "all-logos.jpg", link: "all-logos.pdf" }, { title: "3D Office Renders", img: "floorplan.png", link: "office-renders.pdf" }, { title: "Social Media Ad", img: "social-media-ad.jpg", link: "social-media-ad.pdf" }, { title: "Full Promo Package", img: "logo.jpg", link: "full-package.pdf" }],
-  ["gold"]
+  null
 );
 
 let myProjects = [

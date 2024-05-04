@@ -282,8 +282,8 @@ a.link-grow:hover {
 }
 .project-package-div {
   text-align: center;
-  max-height: 10vh;
-  font-size: 1.25rem;
+  /* max-height: 10vh; */
+  font-size: 1.25vw;
   margin-top: 1.5vh;
   overflow: hidden;
 }
@@ -303,6 +303,10 @@ a.link-grow:hover {
   font-size: 2rem;
   line-height: 2rem;
   margin-left: 1rem;
+}
+
+.promo-items-container {
+  max-height: 0;
 }
 
 .promo-item-div {
@@ -641,7 +645,60 @@ footer > p {
 .ctso-container > h1{
   text-align: center;
   margin-bottom: 3rem;
-  /* text-decoration: underline; */
+}
+
+#contact-header {
+  margin-top: 20vh;
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
+#contact-wrapper {
+  width: 50%;
+  background-color: #242424;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 2vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+#contact-icons {
+  display: flex;
+  align-items: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: darkslateblue;
+  border-radius: 50rem;
+  margin-bottom: 1vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  transition: transform 0.5s;
+}
+
+.contact-item > i {
+  margin-right: 1vw;
+}
+
+.contact-hover:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+#contact-text {
+  line-height: 2vw;
+}
+
+#about-header {
+  margin-top: 20vh;
+  text-align: center;
+  margin-bottom: 5vh;
 }
 
 .hidden {
@@ -781,18 +838,18 @@ footer > p {
 
 @keyframes revealPackage {
   0% {
-    max-height: 10vh;
+    max-height: 0;
   }
   100% {
-    max-height: 100vh;
+    max-height: 200vh;
   }
 }
 @keyframes hidePackage {
   0% {
-    max-height: 100vh;
+    max-height: 200vh;
   }
   100% {
-    max-height: 10vh;
+    max-height: 0;
   }
 }
 

@@ -17,6 +17,9 @@ const skillsUSAProjectContainer = document.getElementById(
   "skillsusa-project-container"
 );
 
+const emailButton = document.querySelector('.email-icon');
+const githubButton = document.querySelector('.github-icon');
+
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".modal-close");
 const modalHeader = document.querySelector(".modal-header");
@@ -367,6 +370,8 @@ if (
       projectPackageHeader.innerHTML = "Check out the full project here:";
       projectPackageHeader.style.display = "inline-block";
       projectPackageHeaderWrapper.appendChild(projectPackageHeader);
+      let promoItemsContainer = document.createElement('div');
+      promoItemsContainer.classList.add('promo-items-container');
 
       let arrowOpened = false;
       let revealItemsIcon = document.createElement("i");
@@ -381,6 +386,7 @@ if (
 
       projectPackageHeaderWrapper.appendChild(revealItemsIcon);
       projectPackageDiv.appendChild(projectPackageHeaderWrapper);
+      projectPackageDiv.appendChild(promoItemsContainer);
       projectDiv.appendChild(projectPackageDiv);
 
       project.promotionalPackageItems.forEach((promoItem) => {
@@ -398,18 +404,18 @@ if (
 
         promoItemDiv.appendChild(promoItemImg);
         promoItemDiv.appendChild(promoItemTitle);
-        // packageItemDiv.appendChild(promoItemDiv);*()
-        projectPackageDiv.appendChild(promoItemDiv);
+        // packageItemDiv.appendChild(promoItemDiv);
+        promoItemsContainer.appendChild(promoItemDiv);
       });
 
       revealItemsIcon.addEventListener("click", (e) => {
         if (arrowOpened) {
           e.target.style.animation = "rotateClose 0.5s ease forwards";
-          projectPackageDiv.style.animation = "hidePackage 0.75s ease forwards";
+          promoItemsContainer.style.animation = "hidePackage 0.75s ease forwards";
           projectDiv.style.animation = "hideMore 1s ease forwards";
         } else {
           e.target.style.animation = "rotateOpen 0.5s ease forwards";
-          projectPackageDiv.style.animation = "revealPackage 0.75s ease forwards";
+          promoItemsContainer.style.animation = "revealPackage 0.75s ease forwards";
           projectDiv.style.animation = "revealMore 1s ease forwards";
         }
         arrowOpened = !arrowOpened;
@@ -665,9 +671,19 @@ if (document.body.contains(slideshowContainer)) {
   }
 }
 
-function sendEmail() {
-  window.open("mailto:marquez.leo100@gmail.com");
-}
+// if (document.body.contains(emailButton)) {
+//   emailButton.addEventListener("click", () => {
+//     // window.open("mailto:marquez.leo100@gmail.com");
+//     window.open('mailto:test@example.com?subject=subject&body=body');
+//   });
+// }
+// console.log(emailButton);
+
+// if (document.body.contains(githubButton)) {
+//   githubButton.addEventListener("click", () => {
+//     window.open("https://github.com/LJMarquez");
+//   });
+// }
 
 if (document.body.contains(codeProjects)) {
   codeProjects.addEventListener("click", (e) => {

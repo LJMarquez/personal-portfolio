@@ -1,72 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marquez Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div id="home"></div>
     <nav>
-            <a href="#home" class="grow">Home</a>
-            <!-- <div> -->
-                <a href="projects.html" class="grow">Projects</a>
-            <!-- </div> -->
-            <a href="contact.html" class="grow">Contact</a>
-            <a href="about.html" class="grow">About</a>
+      <div id="name">LEO MARQUEZ</div>
+      <div id="nav-items">
+        <a href="#home" class="grow">Home</a>
+        <!-- <div> -->
+        <a href="projects.html" class="grow">Projects</a>
+        <!-- </div> -->
+        <a href="contact.html" class="grow">Contact</a>
+        <a href="about.html" class="grow">About</a>
+      </div>
     </nav>
     <div class="intro-banner">
-        <div class="welcome-text">
-        <h1 class="hidden show-right">
-            Hi!
-        </h1>
-        <h1 class="hidden show-right">
-            I'm Leo, and I'm a
-        </h1>
+      <div class="welcome-text">
+        <h1 class="hidden show-right">Hi!</h1>
+        <h1 class="hidden show-right">I'm Leo, and I'm a</h1>
         <span id="personalities-span"></span>
+      </div>
+      <div class="cover-image hidden show-left">
+        <div>
+          <img src="./assets/profile-picture.png" alt="" />
         </div>
-        <div class="cover-image">
-             <!-- Add logo/illustration here -->
-        </div>
+      </div>
     </div>
 
     <div id="featured">
-        <h1>Check Out Some of My Latest Work!</h1>
-        <i class="fa-solid fa-chevron-left featured-arrow prev"></i>
-        <i class="fa-solid fa-chevron-right featured-arrow next"></i>
-        <div id="slideshow-container"></div>
-        <div class="border-grad left-grad"></div>
-        <div class="border-grad right-grad"></div>
+      <h1>Check Out Some of My Latest Work!</h1>
+      <i class="fa-solid fa-chevron-left featured-arrow prev"></i>
+      <i class="fa-solid fa-chevron-right featured-arrow next"></i>
+      <div id="slideshow-container"></div>
+      <div class="border-grad left-grad"></div>
+      <div class="border-grad right-grad"></div>
     </div>
 
     <div id="home-text">
-        <h1>I'm Leo, a <span id="web-dev">web developer</span> and a <span id="gd">graphic designer!</span></h1>
-        <a href="contact.html" class="image-grow">Let's Get Talking!</a>
-        <a href="about.html" class="image-grow">Learn More About Me!</a>
+      <h1>
+        I'm Leo, a <span id="web-dev">web developer</span> and a
+        <span id="gd">graphic designer!</span>
+      </h1>
+      <a href="contact.html" class="image-grow">Let's Get Talking!</a>
+      <a href="about.html" class="image-grow">Learn More About Me!</a>
     </div>
 
     <footer>
-        <p>Leo Marquez</p>
-        <div id="socials">
-            <i class="fa-solid fa-envelope footer-icon email-icon"></i>
-            <i class="fa-solid fa-phone footer-icon"></i>
-            <i class="fa-brands fa-github footer-icon github-icon"></i>
-            <!-- <i class="fa-brands fa-instagram footer-icon"></i> -->
+      <p>Leo Marquez</p>
+      <div id="socials">
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=marquez.leo100@gmail.com"
+          target="_blank"
+          class="contact-hover footer-icon"
+        >
+          <i class="fa-solid fa-envelope email-icon"></i>
+        </a>
+        <div class="footer-icon phone-icon">
+          <i class="fa-solid fa-phone"></i>
+          <div class="phone-pop-up">623-703-4686</div>
         </div>
+        <a
+          href="https://github.com/LJMarquez"
+          target="_blank"
+          class="contact-hover footer-icon"
+        >
+          <i class="fa-brands fa-github github-icon"></i>
+        </a>
+      </div>
     </footer>
 
     <!-- <button type="button" onclick="sendEmail()">AAAAAAAAAAAAA</button> -->
 
     <dialog class="modal">
-        <i class="fa-solid fa-xmark modal-close"></i>
-        <h2 class="modal-header"></h2>
-        <p class="modal-info"></p>
-        <a href="projects.html" class="modal-link">Show Me More!</a>
+      <i class="fa-solid fa-xmark modal-close"></i>
+      <h2 class="modal-header"></h2>
+      <p class="modal-info"></p>
+      <a href="projects.html" class="modal-link">Show Me More!</a>
     </dialog>
 
     <script src="main.js"></script>
-    <script src="https://kit.fontawesome.com/6e0ca69a51.js" crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://kit.fontawesome.com/6e0ca69a51.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

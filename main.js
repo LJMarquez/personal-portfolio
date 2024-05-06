@@ -17,8 +17,8 @@ const skillsUSAProjectContainer = document.getElementById(
   "skillsusa-project-container"
 );
 
-const emailButton = document.querySelector('.email-icon');
-const githubButton = document.querySelector('.github-icon');
+const phoneIcon = document.querySelector(".fa-phone");
+const phonePopUp = document.querySelector(".phone-pop-up");
 
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".modal-close");
@@ -31,10 +31,10 @@ const observer = new IntersectionObserver((entries) => {
       entry.target.classList.add("show");
       if (entry.target.classList.contains("show-right")) {
         entry.target.classList.add("fade-right");
-        // console.log("fading")
-      } else if (entry.target.classList.contains("show-up")) {
-        entry.target.classList.add("fade-up");
-        console.log("fading");
+      } else if (entry.target.classList.contains("show-left")) {
+        setTimeout(function () {
+          entry.target.classList.add("fade-left");
+        }, 2000);
       }
     }
   });
@@ -63,10 +63,15 @@ function setModalBounds() {
   });
 }
 
-// const searchBar = document.getElementById('project-search')
-// function search() {
-//   filter = searchBar.value.toLowerCase();
-// }
+if (document.body.contains(phoneIcon)) {
+  phoneIcon.addEventListener("mouseover", () => {
+    phonePopUp.style.animation = "reveal 0.25s linear forwards";
+  });
+
+  phoneIcon.addEventListener("mouseout", () => {
+    phonePopUp.style.animation = "hide 0.25s linear forwards";
+  });
+}
 
 class Project {
   constructor(
@@ -220,7 +225,20 @@ let chameleonDesigns = new Project(
   "In this project, me and three other people were put in a group and tasked with making a mock up graphics advertising company. We went through multiple steps to procure the final outcome but I'll briefly lay out the steps. We assigned roles to each member of the group and defined our target audience, our mission, company name, slogan, etc. After that we came up with multiple ideas logos and narrowed it down to the one I made and made multiple variations of it. Then we were tasked with designing an office space and the costs of rent and running our business (consumables, tech, etc). Then we developed a promotional package including business cards, letterheads, etc. Throughout the entire process we wrote up memos to communicate with our client (our teacher) to show us what communication looks like in the professional world.",
   null,
   "logo.jpg",
-  [{ title: "All Logos", img: "all-logos.jpg", link: "all-logos.pdf" }, { title: "3D Office Renders", img: "floorplan.png", link: "office-renders.pdf" }, { title: "Social Media Ad", img: "social-media-ad.jpg", link: "social-media-ad.pdf" }, { title: "Full Promo Package", img: "logo.jpg", link: "full-package.pdf" }],
+  [
+    { title: "All Logos", img: "all-logos.jpg", link: "all-logos.pdf" },
+    {
+      title: "3D Office Renders",
+      img: "floorplan.png",
+      link: "office-renders.pdf",
+    },
+    {
+      title: "Social Media Ad",
+      img: "social-media-ad.jpg",
+      link: "social-media-ad.pdf",
+    },
+    { title: "Full Promo Package", img: "logo.jpg", link: "full-package.pdf" },
+  ],
   null
 );
 
@@ -316,47 +334,12 @@ if (
     let projectHeader = document.createElement("h1");
     projectHeader.innerHTML = `${project.header}`;
 
-    let projectDescription = document.createElement("p");
+    let projectDescription = document.createElement("div");
+    projectDescription.classList.add("description");
     descriptionDiv.appendChild(projectHeader);
     descriptionDiv.appendChild(projectDescription);
 
-    if (project.description.length > 220) {
-      projectDescription.innerHTML = project.description.slice(0, 220);
-      let dots = document.createElement("span");
-      dots.innerHTML = " . . .";
-      descriptionDiv.appendChild(dots);
-
-      let more = document.createElement("span");
-      more.innerHTML = project.description.slice(
-        220,
-        project.description.length
-      );
-      more.style.display = "none";
-      descriptionDiv.appendChild(more);
-
-      let moreButton = document.createElement("button");
-      moreButton.classList.add("more-button");
-      moreButton.innerHTML = "More";
-      descriptionDiv.appendChild(moreButton);
-
-      moreButton.addEventListener("click", (e) => {
-        if (dots.style.display === "none") {
-          // projectDiv.style.maxHeight = "70vh";
-          projectDiv.style.animation = "hideMore 1s ease forwards";
-          dots.style.display = "inline";
-          moreButton.innerHTML = "More";
-          more.style.display = "none";
-        } else {
-          // projectDiv.style.maxHeight = "300vh";
-          projectDiv.style.animation = "revealMore 1s ease forwards";
-          dots.style.display = "none";
-          moreButton.innerHTML = "Less";
-          more.style.display = "inline";
-        }
-      });
-    } else {
-      projectDescription.innerHTML = `${project.description}`;
-    }
+    projectDescription.innerHTML = `${project.description}`;
 
     content.appendChild(descriptionDiv);
     projectDiv.appendChild(content);
@@ -370,8 +353,8 @@ if (
       projectPackageHeader.innerHTML = "Check out the full project here:";
       projectPackageHeader.style.display = "inline-block";
       projectPackageHeaderWrapper.appendChild(projectPackageHeader);
-      let promoItemsContainer = document.createElement('div');
-      promoItemsContainer.classList.add('promo-items-container');
+      let promoItemsContainer = document.createElement("div");
+      promoItemsContainer.classList.add("promo-items-container");
 
       let arrowOpened = false;
       let revealItemsIcon = document.createElement("i");
@@ -380,9 +363,6 @@ if (
         "fa-circle-chevron-right",
         "reveal-projects-icon"
       );
-
-      // let packageItemDiv = document.createElement('div');
-      // packageItemDiv.classList.add('package-item-container');
 
       projectPackageHeaderWrapper.appendChild(revealItemsIcon);
       projectPackageDiv.appendChild(projectPackageHeaderWrapper);
@@ -404,23 +384,23 @@ if (
 
         promoItemDiv.appendChild(promoItemImg);
         promoItemDiv.appendChild(promoItemTitle);
-        // packageItemDiv.appendChild(promoItemDiv);
         promoItemsContainer.appendChild(promoItemDiv);
       });
 
       revealItemsIcon.addEventListener("click", (e) => {
         if (arrowOpened) {
           e.target.style.animation = "rotateClose 0.5s ease forwards";
-          promoItemsContainer.style.animation = "hidePackage 0.75s ease forwards";
+          promoItemsContainer.style.animation =
+            "hidePackage 0.75s ease forwards";
           projectDiv.style.animation = "hideMore 1s ease forwards";
         } else {
           e.target.style.animation = "rotateOpen 0.5s ease forwards";
-          promoItemsContainer.style.animation = "revealPackage 0.75s ease forwards";
+          promoItemsContainer.style.animation =
+            "revealPackage 0.75s ease forwards";
           projectDiv.style.animation = "revealMore 1s ease forwards";
         }
         arrowOpened = !arrowOpened;
       });
-
     } else {
       let projectRepoDiv = document.createElement("div");
       projectRepoDiv.classList.add("project-link");
@@ -458,6 +438,38 @@ if (
       project.type == "graphic design"
     ) {
       graphicDesignProjectContainer.appendChild(projectDiv);
+    }
+
+    if (projectDescription.scrollHeight > projectDescription.offsetHeight) {
+      projectDescription.style.overflow = "hidden";
+      let moreDiv = document.createElement("div");
+      moreDiv.classList.add("more-div", "desc-hidden");
+
+      let moreButton = document.createElement("button");
+      moreButton.classList.add("more-desc-button");
+      moreButton.type = "button";
+      moreButton.innerHTML = "More";
+
+      moreButton.addEventListener("click", (e) => {
+        if (projectDescription.style.overflow == "hidden") {
+          projectDescription.style.maxHeight = "max-content";
+          moreDiv.classList.remove("desc-hidden");
+          projectDiv.style.animation = "revealMore 1s ease forwards";
+          projectDescription.style.overflow = "visible";
+          moreButton.innerHTML = "Less";
+          descriptionDiv.style.height = "max-content";
+        } else {
+          projectDescription.style.maxHeight = "23vh";
+          moreDiv.classList.add("desc-hidden");
+          projectDiv.style.animation = "hideMore 1s ease forwards";
+          projectDescription.style.overflow = "hidden";
+          moreButton.innerHTML = "More";
+          descriptionDiv.style.height = "36vh";
+        }
+      });
+
+      moreDiv.appendChild(moreButton);
+      descriptionDiv.appendChild(moreDiv);
     }
   });
 }
@@ -670,20 +682,6 @@ if (document.body.contains(slideshowContainer)) {
     }
   }
 }
-
-// if (document.body.contains(emailButton)) {
-//   emailButton.addEventListener("click", () => {
-//     // window.open("mailto:marquez.leo100@gmail.com");
-//     window.open('mailto:test@example.com?subject=subject&body=body');
-//   });
-// }
-// console.log(emailButton);
-
-// if (document.body.contains(githubButton)) {
-//   githubButton.addEventListener("click", () => {
-//     window.open("https://github.com/LJMarquez");
-//   });
-// }
 
 if (document.body.contains(codeProjects)) {
   codeProjects.addEventListener("click", (e) => {

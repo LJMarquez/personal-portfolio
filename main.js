@@ -242,7 +242,22 @@ let chameleonDesigns = new Project(
   null
 );
 
+let talentLink = new Project(
+  "coding",
+  "Talent Link",
+  "talent-link",
+  "https://github.com/FBLA-2025/FBLA-Web-Coding-Regional",
+  "Your Future Career Starts Here!",
+  // "In this project, me and three other people were put in a group and tasked with making a mock up graphics advertising company. We went through multiple steps to procure the final outcome but I'll briefly lay out the steps. We assigned roles to each member of the group and defined our target audience, our mission, company name, slogan, etc. After that we came up with multiple ideas logos and narrowed it down to the one I made and made multiple variations of it. Then we were tasked with designing an office space and the costs of rent and running our business (consumables, tech, etc). Then we developed a promotional package including business cards, letterheads, etc. Throughout the entire process we wrote up memos to communicate with our client (our teacher) to show us what communication looks like in the professional world.",
+  "In this project me and my two other teammates were tasked with creating a job website for our school's guidance department that allowed students to apply to jobs, employers to post jobs, a backend admin to approve/deny jobs, and a page where the jobs are listed. We developed a company and site called TalentLink. The main technologies I used for this site were the Astro JS framework, React, MongoDB, Mongoose, Express, Axios, and Node. Astro is a framework that allows you to use multiple frameworks within your project and separate it into modules. I used React to create the components and frontend of the site. I used MongoDB as my database to store all site data (jobs, users, etc). I used Mongoose to create the schemas for the data and to connect to the database. I used Express to create the backend server and Axios to make API calls to the database. I also used CSS and HTML within my React components to style the site and make it look nice. As far as some features of the site, it had a log in with encrpyted passwords, conditional page renders depending on if the user was a student, employer, or admin, carousel elemnts, and procedural generation for jobs. This project was a lot of fun and I learned a lot about how to use these technologies together. I also learned a lot about how to work in a team and communicate with my teammates.",
+  "https://github.com/FBLA-2025/FBLA-Web-Coding-Regional",
+  "talent-link.jpg",
+  null,
+  ["gold", "bronze"]
+);
+
 let myProjects = [
+  talentLink,
   novatechSite,
   culinaryShowdown,
   crocGame,
@@ -316,7 +331,7 @@ if (
 
     if (project.type == "coding") {
       coverImg.classList.add("code-project-cover-image");
-      coverImg.src = `./assets/project-covers/${project.coverImg}`;
+      coverImg.src = `../assets/project-covers/${project.coverImg}`;
       coverImg.alt = `Landing page for Leo's ${project.title} project.`;
     } else {
       coverImg.classList.add("gd-project-cover-image");
@@ -688,9 +703,9 @@ if (document.body.contains(codeProjects)) {
     document.location.href = "code-projects.html";
   });
 
-  awardProjects.addEventListener("click", (e) => {
-    document.location.href = "award-projects.html";
-  });
+  // awardProjects.addEventListener("click", (e) => {
+  //   document.location.href = "award-projects.html";
+  // });
 
   gdProjects.addEventListener("click", (e) => {
     document.location.href = "graphic-design-projects.html";

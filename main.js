@@ -1066,7 +1066,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const redControl = document.createElement("span")
       redControl.className = "carousel-control red"
-      redControl.innerHTML = '<i class="fas fa-times"></i>' // Add SVG icon for ×
+      redControl.innerHTML = '<i class="fas fa-times"></i>'
       redControl.addEventListener("click", (e) => {
         e.stopPropagation()
         prevBtn.click()
@@ -1077,7 +1077,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const greenControl = document.createElement("span")
       greenControl.className = "carousel-control green"
-      greenControl.innerHTML = '<i class="fas fa-plus"></i>' // Add SVG icon for +
+      greenControl.innerHTML = '<i class="fas fa-plus"></i>'
       greenControl.addEventListener("click", (e) => {
         e.stopPropagation()
         window.open(project.projectLink, "_blank")
@@ -1096,7 +1096,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const img = document.createElement("img")
       img.className = "carousel-image"
       img.src = project.type === "coding"
-        ? `./assets/project-covers/${project.coverImg}`
+        ? `./assets/project-covers/${project.coverImg}` 
         : `./assets/graphic-design-projects/${project.id}/${project.coverImg}`
       img.alt = project.title
 

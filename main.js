@@ -1,3 +1,4 @@
+// DOM Elements
 const codingProjectContainer = document.getElementById("coding-project-container")
 const graphicDesignProjectContainer = document.getElementById("graphic-design-project-container")
 
@@ -22,6 +23,74 @@ const modalInfo = document.querySelector(".modal-info")
 // Mobile menu functionality
 const hamburgerMenu = document.getElementById("hamburger-menu")
 const mobileNav = document.getElementById("mobile-nav")
+
+// DOM Elements
+const hamburgerBtn = document.getElementById("hamburger")
+const mobileMenu = document.getElementById("mobile-menu")
+const navbarLinks = document.querySelectorAll(".navbar-link")
+const mobileMenuLinks = document.querySelectorAll(".mobile-menu-link")
+const carouselSlides = document.querySelectorAll(".carousel-slide")
+const prevBtn = document.querySelector(".carousel-arrow.prev")
+const nextBtn = document.querySelector(".carousel-arrow.next")
+const modalBtns = document.querySelectorAll("[data-modal]")
+const modals = document.querySelectorAll(".modal")
+const modalCloseBtns = document.querySelectorAll(".modal-close")
+const projectCards = document.querySelectorAll(".project-card")
+const projectTypes = document.querySelectorAll(".project-type")
+
+// Mobile Menu Toggle
+if (hamburgerBtn && mobileMenu) {
+  hamburgerBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("active")
+    hamburgerBtn.classList.toggle("active")
+
+    // Change hamburger icon
+    const icon = hamburgerBtn.querySelector("i")
+    if (icon.classList.contains("fa-bars")) {
+      icon.classList.remove("fa-bars")
+      icon.classList.add("fa-times")
+    } else {
+      icon.classList.remove("fa-times")
+      icon.classList.add("fa-bars")
+    }
+  })
+
+  // Close mobile menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target) && mobileMenu.classList.contains("active")) {
+      mobileMenu.classList.remove("active")
+      hamburgerBtn.classList.remove("active")
+
+      const icon = hamburgerBtn.querySelector("i")
+      icon.classList.remove("fa-times")
+      icon.classList.add("fa-bars")
+    }
+  })
+
+  // Close mobile menu when clicking on a link
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("active")
+      hamburgerBtn.classList.remove("active")
+
+      const icon = hamburgerBtn.querySelector("i")
+      icon.classList.remove("fa-times")
+      icon.classList.add("fa-bars")
+    })
+  })
+}
+
+// Navbar Scroll Effect
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar")
+  if (window.scrollY > 50) {
+    navbar.style.padding = "0.5rem 0"
+    navbar.style.boxShadow = "0 5px 15px var(--shadow-color)"
+  } else {
+    navbar.style.padding = "1rem 0"
+    navbar.style.boxShadow = "0 2px 10px var(--shadow-color)"
+  }
+})
 
 if (hamburgerMenu) {
   hamburgerMenu.addEventListener("click", () => {
@@ -113,6 +182,192 @@ if (document.body.contains(phoneIcon)) {
     }
   })
 }
+
+// Typing Animation for Personalities
+const personalitiesArray = ["Developer", "Designer", "Creator", "Programmer", "Learner"]
+let personalityIndex = 0
+let charIndex = 0
+
+if (personalitiesSpan) {
+  setTimeout(() => {
+    typePersonality()
+  }, 2000)
+}
+
+function typePersonality() {
+  const typingInterval = setInterval(() => {
+    const currentText = personalitiesArray[personalityIndex]
+    personalitiesSpan.textContent += currentText[charIndex]
+    charIndex++
+
+    if (charIndex === currentText.length) {
+      clearInterval(typingInterval)
+      charIndex = 0
+
+      setTimeout(() => {
+        deletePersonality()
+      }, 1500)
+    }
+  }, 100)
+}
+
+function deletePersonality() {
+  const deletingInterval = setInterval(() => {
+    const text = personalitiesSpan.textContent
+    personalitiesSpan.textContent = text.slice(0, -1)
+
+    if (personalitiesSpan.textContent.length === 0) {
+      clearInterval(deletingInterval)
+      personalityIndex = (personalityIndex + 1) % personalitiesArray.length
+      setTimeout(() => {
+        typePersonality()
+      }, 500)
+    }
+  }, 50)
+}
+
+// Carousel Functionality
+let currentSlide = 0
+
+function showSlide(index) {
+  carouselSlides.forEach((slide, i) => {
+    slide.classList.remove("active")
+    if (i === index) {
+      slide.classList.add("active")
+    }
+  })
+}
+
+if (carouselSlides.length > 0) {
+  showSlide(currentSlide)
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", () => {
+      currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length
+      showSlide(currentSlide)
+    })
+
+    nextBtn.addEventListener("click", () => {
+      currentSlide = (currentSlide + 1) % carouselSlides.length
+      showSlide(currentSlide)
+    })
+  }
+
+  // Auto slide
+  // setInterval(() => {
+  //   currentSlide = (currentSlide + 1) % carouselSlides.length
+  //   showSlide(currentSlide)
+  // }, 5000)
+
+  // Touch swipe for mobile
+  let touchStartX = 0
+  let touchEndX = 0
+
+  const carousel = document.querySelector(".carousel")
+  if (carousel) {
+    carousel.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX
+      },
+      false,
+    )
+
+    carousel.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX
+        handleSwipe()
+      },
+      false,
+    )
+  }
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      // Swipe left - next slide
+      currentSlide = (currentSlide + 1) % carouselSlides.length
+      showSlide(currentSlide)
+    }
+
+    if (touchEndX > touchStartX + 50) {
+      // Swipe right - previous slide
+      currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length
+      showSlide(currentSlide)
+    }
+  }
+}
+
+// Modal Functionality
+modalBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const modalId = btn.getAttribute("data-modal")
+    const modal = document.getElementById(modalId)
+
+    if (modal) {
+      modal.classList.add("active")
+      document.body.style.overflow = "hidden"
+    }
+  })
+})
+
+modalCloseBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const modal = btn.closest(".modal")
+    modal.classList.remove("active")
+    document.body.style.overflow = "auto"
+  })
+})
+
+modals.forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("active")
+      document.body.style.overflow = "auto"
+    }
+  })
+})
+
+// Project Cards Hover Effect
+projectCards.forEach((card) => {
+  card.addEventListener("mouseenter", () => {
+    card.querySelector(".project-image img").style.transform = "scale(1.1)"
+  })
+
+  card.addEventListener("mouseleave", () => {
+    card.querySelector(".project-image img").style.transform = "scale(1)"
+  })
+})
+
+// Project Types Click Event
+projectTypes.forEach((type) => {
+  type.addEventListener("click", () => {
+    const projectType = type.getAttribute("data-type")
+    if (projectType === "code") {
+      window.location.href = "code-projects.html"
+    } else if (projectType === "design") {
+      window.location.href = "graphic-design-projects.html"
+    }
+  })
+})
+
+// Scroll Reveal Animation
+const revealElements = document.querySelectorAll(".reveal")
+
+function reveal() {
+  revealElements.forEach((element) => {
+    const windowHeight = window.innerHeight
+    const elementTop = element.getBoundingClientRect().top
+    const elementVisible = 150
+
+    if (elementTop < windowHeight - elementVisible) {
+      element.classList.add("active")
+    }
+  })
+}
+
+window.addEventListener("scroll", reveal)
+reveal() // Initial check
 
 class Project {
   constructor(type, title, id, projectLink, header, description, repoLink, coverImg, promotionalPackageItems, awards) {
@@ -282,11 +537,25 @@ const talentLink = new Project(
   "https://github.com/FBLA-2025/FBLA-Web-Coding-Regional",
   "talent-link.jpg",
   null,
-  ["gold", "bronze"],
-)
+  ["gold", "bronze"]
+);
+
+const edumon = new Project(
+  "coding",
+  "Edumon",
+  "edumon",
+  "https://github.com/FBLA-2025-app/App-FBLA-state",
+  "Can You Defeat The Headmaster?",
+  "For this project, I created Edumon, a complex full-stack turn-based RPG where players collect and battle monsters by answering educational questions to determine the success of their moves. I used React Native for the frontend, implemented async storage for managing game state and user progression, and added subject and difficulty customization to tailor the learning experience. The app also includes animations, audio integration, and pixel art visuals to provide a seamless, engaging experience.",
+  "https://github.com/FBLA-2025-app/App-FBLA-state",
+  "edumon.jpg",
+  null,
+  ["gold", "silver"]
+);
 
 const myProjects = [
   talentLink,
+  edumon,
   novatechSite,
   culinaryShowdown,
   crocGame,
@@ -298,6 +567,200 @@ const myProjects = [
   copperCanyonFilmFest,
   chameleonDesigns,
 ]
+
+// Create Project Cards
+const projectsContainer = document.getElementById("projects-container")
+
+function createProjectCard(project, container) {
+  const card = document.createElement("div")
+  card.className = "project-card position-relative"
+
+  // Create award badges if any
+  if (project.awards) {
+    project.awards.forEach((award) => {
+      const badge = document.createElement("div")
+      badge.className = "project-badge"
+      badge.textContent = award === "gold" ? "Gold" : award === "silver" ? "Silver" : "Bronze"
+      badge.style.backgroundColor =
+        award === "gold" ? "var(--warning)" : award === "silver" ? "var(--text-muted)" : "var(--accent-tertiary)"
+      card.appendChild(badge)
+    })
+  }
+
+  // Create project image
+  const imageContainer = document.createElement("div")
+  imageContainer.className = "project-image"
+
+  const image = document.createElement("img")
+  image.src =
+    project.type === "coding"
+      ? `../assets/project-covers/${project.coverImg}`
+      : `./assets/graphic-design-projects/${project.id}/${project.coverImg}`
+  image.alt = `${project.title} project`
+
+  imageContainer.appendChild(image)
+  card.appendChild(imageContainer)
+
+  // Create project content
+  const content = document.createElement("div")
+  content.className = "project-content"
+
+  const title = document.createElement("h3")
+  title.className = "project-title"
+  title.textContent = project.title
+
+  const header = document.createElement("p")
+  header.className = "mb-2"
+  header.textContent = project.header
+
+  const description = document.createElement("p")
+  description.className = "project-description"
+  description.textContent = project.description.replace(/<[^>]*>/g, "")
+
+  const links = document.createElement("div")
+  links.className = "project-links"
+
+  const viewLink = document.createElement("a")
+  viewLink.className = "project-link"
+  viewLink.href = project.projectLink
+  viewLink.target = "_blank"
+  viewLink.textContent = "View Project"
+
+  links.appendChild(viewLink)
+
+  if (project.repoLink) {
+    const codeLink = document.createElement("a")
+    codeLink.className = "project-link"
+    codeLink.href = project.repoLink
+    codeLink.target = "_blank"
+    codeLink.textContent = "View Code"
+    links.appendChild(codeLink)
+  }
+
+  content.appendChild(title)
+  content.appendChild(header)
+  content.appendChild(description)
+  content.appendChild(links)
+
+  card.appendChild(content)
+
+  // Add modal trigger for more details
+  card.setAttribute("data-modal", `modal-${project.id}`)
+  card.classList.add("modal-trigger")
+
+  container.appendChild(card)
+
+  // Create modal for project details
+  createProjectModal(project)
+}
+
+function createProjectModal(project) {
+  const modal = document.createElement("div")
+  modal.className = "modal"
+  modal.id = `modal-${project.id}`
+
+  const modalContent = document.createElement("div")
+  modalContent.className = "modal-content"
+
+  const closeBtn = document.createElement("button")
+  closeBtn.className = "modal-close"
+  closeBtn.innerHTML = '<i class="fas fa-times"></i>'
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active")
+    document.body.style.overflow = "auto"
+  })
+
+  const title = document.createElement("h2")
+  title.className = "modal-title"
+  title.textContent = project.title
+
+  const body = document.createElement("div")
+  body.className = "modal-body"
+  body.innerHTML = project.description
+
+  const footer = document.createElement("div")
+  footer.className = "modal-footer"
+
+  const viewBtn = document.createElement("a")
+  viewBtn.className = "modal-button"
+  viewBtn.href = project.projectLink
+  viewBtn.target = "_blank"
+  viewBtn.textContent = "View Project"
+
+  footer.appendChild(viewBtn)
+
+  modalContent.appendChild(closeBtn)
+  modalContent.appendChild(title)
+  modalContent.appendChild(body)
+  modalContent.appendChild(footer)
+
+  modal.appendChild(modalContent)
+
+  document.body.appendChild(modal)
+}
+
+// Initialize project cards if containers exist
+if (
+  projectsContainer ||
+  codingProjectContainer ||
+  graphicDesignProjectContainer ||
+  fblaProjectContainer ||
+  skillsUSAProjectContainer
+) {
+  // Featured projects on home page
+  if (projectsContainer) {
+    // const featuredProjects = myProjects.slice(0, 3)
+    const featuredProjects = [talentLink, novatechSite, culinaryShowdown]
+    featuredProjects.forEach((project) => {
+      createProjectCard(project, projectsContainer)
+    })
+  }
+
+  // Coding projects page
+  if (codingProjectContainer) {
+    const codingProjects = myProjects.filter((project) => project.type === "coding")
+    codingProjects.forEach((project) => {
+      createProjectCard(project, codingProjectContainer)
+    })
+  }
+
+  // Graphic design projects page
+  if (graphicDesignProjectContainer) {
+    const designProjects = myProjects.filter((project) => project.type === "graphic design")
+    designProjects.forEach((project) => {
+      createProjectCard(project, graphicDesignProjectContainer)
+    })
+  }
+
+  // Award projects page
+  if (fblaProjectContainer && skillsUSAProjectContainer) {
+    const fblaProjects = myProjects.filter((project) => project.awards && project.type === "coding")
+    const skillsUSAProjects = myProjects.filter((project) => project.awards && project.type === "graphic design")
+
+    fblaProjects.forEach((project) => {
+      createProjectCard(project, fblaProjectContainer)
+    })
+
+    skillsUSAProjects.forEach((project) => {
+      createProjectCard(project, skillsUSAProjectContainer)
+    })
+  }
+
+  // Add event listeners to modal triggers
+  const modalTriggers = document.querySelectorAll(".modal-trigger")
+  modalTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const modalId = trigger.getAttribute("data-modal")
+      const modal = document.getElementById(modalId)
+
+      if (modal) {
+        modal.classList.add("active")
+        document.body.style.overflow = "hidden"
+      }
+    })
+  })
+}
 
 // Create project cards
 if (
@@ -462,17 +925,17 @@ if (
       projectDiv.appendChild(projectRepoDiv)
     }
 
-    if (document.body.contains(fblaProjectContainer) && project.awards !== null) {
-      if (project.type == "coding") {
-        fblaProjectContainer.appendChild(projectDiv)
-      } else {
-        skillsUSAProjectContainer.appendChild(projectDiv)
-      }
-    } else if (document.body.contains(codingProjectContainer) && project.type == "coding") {
-      codingProjectContainer.appendChild(projectDiv)
-    } else if (document.body.contains(graphicDesignProjectContainer) && project.type == "graphic design") {
-      graphicDesignProjectContainer.appendChild(projectDiv)
-    }
+    // if (document.body.contains(fblaProjectContainer) && project.awards !== null) {
+    //   if (project.type == "coding") {
+    //     fblaProjectContainer.appendChild(projectDiv)
+    //   } else {
+    //     skillsUSAProjectContainer.appendChild(projectDiv)
+    //   }
+    // } else if (document.body.contains(codingProjectContainer) && project.type == "coding") {
+    //   codingProjectContainer.appendChild(projectDiv)
+    // } else if (document.body.contains(graphicDesignProjectContainer) && project.type == "graphic design") {
+    //   graphicDesignProjectContainer.appendChild(projectDiv)
+    // }
 
     // Responsive description handling
     if (projectDescription.scrollHeight > projectDescription.offsetHeight) {
@@ -520,16 +983,16 @@ if (
   })
 }
 
-const personalitiesArray = ["Developer", "Designer", "Creator", "Programmer", "Learner"]
+// const personalitiesArray = ["Developer", "Designer", "Creator", "Programmer", "Learner"]
 
-let personalityIndex = 0
+// let personalityIndex = 0
 let animIndex = 0
 
-if (document.body.contains(personalitiesSpan)) {
-  setTimeout(() => {
-    typePersonality()
-  }, 1500) // Reduced from 2000ms for better mobile experience
-}
+// if (document.body.contains(personalitiesSpan)) {
+//   setTimeout(() => {
+//     typePersonality()
+//   }, 1500) // Reduced from 2000ms for better mobile experience
+// }
 
 function typePersonality() {
   const typingInterval = setInterval(() => {
@@ -559,201 +1022,130 @@ function typePersonality() {
 
 const featuredProjectsArray = [novatechSite, crocGame, copperCanyonFilmFest]
 
-const featuredProjectSlides = []
+// Initialize the carousel with featured projects
+document.addEventListener("DOMContentLoaded", () => {
+  const carouselContainer = document.querySelector(".carousel-container")
 
-if (document.body.contains(slideshowContainer)) {
-  featuredProjectsArray.forEach((project) => {
-    const slideDiv = document.createElement("div")
-    slideDiv.classList.add("featured-slide", "inactive-slide")
+  if (carouselContainer) {
+    console.log("Found carousel container, populating slides")
+    // Clear any existing content
+    carouselContainer.innerHTML = ''
 
-    const headerWrapper = document.createElement("div")
-    headerWrapper.classList.add("slide-title")
+    // Create slides for each featured project
+    featuredProjectsArray.forEach((project, index) => {
+      const slide = document.createElement("div")
+      slide.className = "carousel-slide"
+      if (index === 0) slide.classList.add("active")
 
-    const slideHeader = document.createElement("h1")
-    slideHeader.innerHTML = `${project.title}`
+      const header = document.createElement("div")
+      header.className = "carousel-header"
 
-    headerWrapper.appendChild(slideHeader)
+      const title = document.createElement("h2")
+      title.className = "carousel-title"
+      title.textContent = project.title
 
-    const projectPageLink = document.createElement("a")
-    projectPageLink.classList.add("image-grow", "slide-img-wrapper")
-    if (project.type === "coding") {
-      projectPageLink.href = `${project.projectLink}`
-    } else {
-      projectPageLink.href = `./assets/graphic-design-projects/${project.id}/${project.projectLink}`
-    }
-    projectPageLink.target = "_blank"
+      const controls = document.createElement("div")
+      controls.className = "carousel-controls"
 
-    const coverImg = document.createElement("img")
-    coverImg.classList.add("slide-img")
+      const redControl = document.createElement("span")
+      redControl.className = "carousel-control red"
+      redControl.addEventListener("click", (e) => {
+        e.stopPropagation()
+        prevBtn.click()
+      })
 
-    if (project.type === "coding") {
-      coverImg.src = `./assets/project-covers/${project.coverImg}`
-      coverImg.alt = `Landing page for Leo's ${project.title} project.`
-    } else {
-      coverImg.src = `./assets/graphic-design-projects/${project.id}/${project.coverImg}`
-      coverImg.alt = `Logo for Leo's ${project.title} project.`
-    }
+      const yellowControl = document.createElement("span")
+      yellowControl.className = "carousel-control yellow"
 
-    projectPageLink.appendChild(coverImg)
+      const greenControl = document.createElement("span")
+      greenControl.className = "carousel-control green"
+      greenControl.addEventListener("click", (e) => {
+        e.stopPropagation()
+        window.open(project.projectLink, "_blank")
+      })
 
-    const dot1 = document.createElement("div")
-    dot1.classList.add("dot")
-    dot1.style.left = "4%"
-    dot1.style.backgroundColor = "red"
-    const xIcon = document.createElement("i")
-    xIcon.classList.add("fa-solid", "fa-xmark")
-    dot1.appendChild(xIcon)
-    dot1.addEventListener("click", () => {
-      let direction
-      featuredIndex--
-      activeSlide.style.animation = "exitLeft 0.75s ease-in forwards"
-      direction = "left"
-      if (featuredIndex < 0) {
-        featuredIndex = featuredProjectSlides.length - 1
-      }
-      activeSlide = featuredProjectSlides[featuredIndex]
-      activeSlide.classList.remove("inactive-slide")
-      slideEnter(direction)
-    })
-    const dot2 = document.createElement("div")
-    dot2.classList.add("dot")
-    dot2.style.left = "7%"
-    dot2.style.backgroundColor = "yellow"
-    const dot3 = document.createElement("div")
-    dot3.classList.add("dot")
-    dot3.style.left = "10%"
-    dot3.style.backgroundColor = "lightgreen"
-    const plusIcon = document.createElement("i")
-    plusIcon.classList.add("fa-solid", "fa-plus")
-    dot3.appendChild(plusIcon)
-    dot3.addEventListener("click", () => {
-      window.open(project.projectLink, "_blank")
-    })
+      controls.appendChild(redControl)
+      controls.appendChild(yellowControl)
+      controls.appendChild(greenControl)
 
-    const infoIcon = document.createElement("i")
-    infoIcon.classList.add("fa-solid", "fa-circle-info", "info-icon")
-    infoIcon.addEventListener("click", () => {
-      modal.showModal()
-      modalHeader.innerHTML = `${project.title}`
+      header.appendChild(title)
+      header.appendChild(controls)
 
-      if (project.description.length > 280) {
-        modalInfo.innerHTML = project.description.slice(0, 200)
-        const dots = document.createElement("span")
-        dots.innerHTML = " . . ."
-        modalInfo.appendChild(dots)
+      const imgWrapper = document.createElement("div")
+      imgWrapper.className = "carousel-image-wrapper"
 
-        const more = document.createElement("span")
-        more.innerHTML = project.description.slice(200, project.description.length)
-        more.style.display = "none"
-        modalInfo.appendChild(more)
+      const img = document.createElement("img")
+      img.className = "carousel-image"
+      img.src = project.type === "coding"
+        ? `./assets/project-covers/${project.coverImg}`
+        : `./assets/graphic-design-projects/${project.id}/${project.coverImg}`
+      img.alt = project.title
 
-        const moreButton = document.createElement("button")
-        moreButton.classList.add("modal-more-button")
-        moreButton.innerHTML = "More"
-        modalInfo.appendChild(moreButton)
+      imgWrapper.appendChild(img)
 
-        moreButton.addEventListener("click", (e) => {
-          setModalBounds()
-          dots.style.display = "none"
-          moreButton.style.display = "none"
-          more.style.display = "inline"
-        })
-      } else {
-        modalInfo.innerHTML = `${project.description}`
-      }
+      slide.appendChild(header)
+      slide.appendChild(imgWrapper)
+
+      // Add click event to open the project
+      slide.addEventListener("click", () => {
+        window.open(project.projectLink, "_blank")
+      })
+
+      carouselContainer.appendChild(slide)
     })
 
-    headerWrapper.appendChild(dot1)
-    headerWrapper.appendChild(dot2)
-    headerWrapper.appendChild(dot3)
-    headerWrapper.appendChild(infoIcon)
-    slideDiv.appendChild(headerWrapper)
-    slideDiv.appendChild(projectPageLink)
+    // Important: Update the carousel slides reference after creating new slides
+    const updatedSlides = document.querySelectorAll(".carousel-slide")
 
-    slideshowContainer.appendChild(slideDiv)
-    featuredProjectSlides.push(slideDiv)
-  })
+    // Reset current slide and show the first one
+    currentSlide = 0
 
-  let featuredIndex = 0
-  let activeSlide = featuredProjectSlides[featuredIndex]
-  activeSlide.classList.remove("inactive-slide")
-
-  const featuredArrows = document.querySelectorAll(".featured-arrow")
-  featuredArrows.forEach((arrow) => {
-    arrow.addEventListener("click", () => {
-      let direction
-      arrow.style.animation = "none"
-      arrow.offsetHeight
-      arrow.style.animation = "bounce .3s ease"
-      if (arrow.classList.contains("next")) {
-        featuredIndex++
-        activeSlide.style.animation = "exitRight 0.75s ease-in forwards"
-        direction = "right"
-      } else {
-        featuredIndex--
-        activeSlide.style.animation = "exitLeft 0.75s ease-in forwards"
-        direction = "left"
-      }
-      if (featuredIndex < 0) {
-        featuredIndex = featuredProjectSlides.length - 1
-      }
-      if (featuredIndex > featuredProjectSlides.length - 1) {
-        featuredIndex = 0
-      }
-      activeSlide = featuredProjectSlides[featuredIndex]
-      activeSlide.classList.remove("inactive-slide")
-      slideEnter(direction)
-    })
-  })
-
-  // Add touch swipe support for mobile
-  let touchStartX = 0
-  let touchEndX = 0
-
-  slideshowContainer.addEventListener(
-    "touchstart",
-    (e) => {
-      touchStartX = e.changedTouches[0].screenX
-    },
-    false,
-  )
-
-  slideshowContainer.addEventListener(
-    "touchend",
-    (e) => {
-      touchEndX = e.changedTouches[0].screenX
-      handleSwipe()
-    },
-    false,
-  )
-
-  function handleSwipe() {
-    if (touchEndX < touchStartX - 50) {
-      // Swipe left - next slide
-      document.querySelector(".next").click()
+    // Updated function to show slides that works with our dynamic content
+    function updateSlideVisibility() {
+      updatedSlides.forEach((slide, i) => {
+        slide.classList.remove("active")
+        if (i === currentSlide) {
+          slide.classList.add("active")
+        }
+      })
     }
-    if (touchEndX > touchStartX + 50) {
-      // Swipe right - previous slide
-      document.querySelector(".prev").click()
+
+    // Initial slide display
+    updateSlideVisibility()
+
+    // Re-attach event listeners to carousel arrows
+    const prevArrow = document.querySelector(".carousel-arrow.prev")
+    const nextArrow = document.querySelector(".carousel-arrow.next")
+
+    if (prevArrow) {
+      prevArrow.addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + updatedSlides.length) % updatedSlides.length
+        updateSlideVisibility()
+        console.log("Previous clicked, now showing slide", currentSlide)
+      })
     }
+
+    if (nextArrow) {
+      nextArrow.addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % updatedSlides.length
+        updateSlideVisibility()
+        console.log("Next clicked, now showing slide", currentSlide)
+      })
+    }
+
+    console.log(`Created ${updatedSlides.length} carousel slides`)
+  } else {
+    console.error("Carousel container not found")
   }
-
-  function slideEnter(direction) {
-    if (direction == "left") {
-      activeSlide.style.animation = "enterLeft 0.75s ease-out forwards"
-    } else {
-      activeSlide.style.animation = "enterRight 0.75s ease-out forwards"
-    }
-  }
-}
+})
 
 if (document.body.contains(codeProjects)) {
   codeProjects.addEventListener("click", (e) => {
-    document.location.href = "code-projects.html"
+    document.location.href = "../code-projects.html";
   })
 
   gdProjects.addEventListener("click", (e) => {
-    document.location.href = "graphic-design-projects.html"
+    document.location.href = "../graphic-design-projects.html";
   })
 }
 

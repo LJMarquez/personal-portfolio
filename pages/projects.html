@@ -3,81 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects Overview</title>
-    <link rel="icon" type="image/x-icon" href="" />
+    <title>Projects | Leo Marquez</title>
     <link rel="stylesheet" href="../styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <div class="page-container">
-    <div id="projects"></div>
-    <nav>
-      <div id="name">LEO MARQUEZ</div>
-      <div id="nav-items">
-        <a href="../index.html" class="grow">Home</a>
-        <a href="projects.html" class="grow">Projects</a>
-        <a href="contact.html" class="grow">Contact</a>
-        <a href="about.html" class="grow">About</a>
-      </div>
-      <div id="hamburger-menu">
-        <i class="fa-solid fa-bars"></i>
-      </div>
-      <div id="mobile-nav" class="hidden">
-        <a href="../index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container navbar-container">
+        <a href="../index.html" class="navbar-logo">LEO MARQUEZ</a>
+        <div class="navbar-links">
+          <a href="../index.html" class="navbar-link">Home</a>
+          <a href="projects.html" class="navbar-link">Projects</a>
+          <a href="contact.html" class="navbar-link">Contact</a>
+          <a href="about.html" class="navbar-link">About</a>
+        </div>
+        <button id="hamburger" class="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </nav>
 
-    <h1 id="project-page-header">Projects</h1>
-    <div id="project-types">
-      <div id="code-projects" class="project-page-link">
-        <div>
-          <i class="fa-solid fa-code project-page-icon"></i>
-          <h2>Coding Projects</h2>
-        </div>
-      </div>
-
-      <div id="gd-projects" class="project-page-link">
-        <div>
-          <i class="fa-solid fa-bezier-curve project-page-icon"></i>
-          <h2>
-            Graphic Design Projects
-            <span class="important">(Work in progress)</span>
-          </h2>
-        </div>
-      </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="../index.html" class="mobile-menu-link">Home</a>
+      <a href="projects.html" class="mobile-menu-link">Projects</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
     </div>
 
-    <footer>
-      <p>Leo Marquez</p>
-      <div id="socials">
-        <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=marquez.leo100@gmail.com"
-          target="_blank"
-          class="contact-hover footer-icon"
-        >
-          <i class="fa-solid fa-envelope email-icon"></i>
-        </a>
-        <div class="footer-icon phone-icon">
-          <i class="fa-solid fa-phone"></i>
-          <div class="phone-pop-up">623-703-4686</div>
+    <!-- Projects Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="section-title">Projects</h1>
+        <p class="text-center mb-5">
+          Explore my work in web development and graphic design
+        </p>
+      </div>
+    </section>
+
+    <!-- Project Types -->
+    <section class="project-types-section">
+      <div class="container">
+        <div class="project-types">
+          <div class="project-type" data-type="code">
+            <div class="project-type-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Coding Projects</h3>
+            <p>
+              Web development projects built with HTML, CSS, JavaScript and more
+            </p>
+          </div>
+
+          <div class="project-type" data-type="design">
+            <div class="project-type-icon">
+              <i class="fas fa-bezier-curve"></i>
+            </div>
+            <h3>Graphic Design Projects</h3>
+            <p>Logos, flyers, brochures, and other design work</p>
+          </div>
+
+          <!-- <div class="project-type" data-type="award">
+            <div class="project-type-icon">
+              <i class="fas fa-medal"></i>
+            </div>
+            <h3>Award-Winning Projects</h3>
+            <p>Projects that have won awards in competitions</p>
+          </div> -->
         </div>
-        <a
-          href="https://github.com/LJMarquez"
-          target="_blank"
-          class="contact-hover footer-icon"
-        >
-          <i class="fa-brands fa-github github-icon"></i>
-        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <p class="footer-text">Leo Marquez</p>
+        <div class="social-links">
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=marquez.leo100@gmail.com"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="tel:6237034686" class="social-link">
+            <i class="fas fa-phone"></i>
+          </a>
+          <a
+            href="https://github.com/LJMarquez"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
       </div>
     </footer>
-    </div>
 
     <script src="../main.js"></script>
-    <script
-      src="https://kit.fontawesome.com/6e0ca69a51.js"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>

@@ -3,96 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Me</title>
-    <link rel="icon" type="image/x-icon" href="" />
+    <title>Contact Me | Leo Marquez</title>
     <link rel="stylesheet" href="../styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <div class="page-container">
-    <div id="contact"></div>
-    <nav>
-      <div id="name">LEO MARQUEZ</div>
-      <div id="nav-items">
-        <a href="../index.html" class="grow">Home</a>
-        <a href="projects.html" class="grow">Projects</a>
-        <a href="contact.html" class="grow">Contact</a>
-        <a href="about.html" class="grow">About</a>
-      </div>
-      <div id="hamburger-menu">
-        <i class="fa-solid fa-bars"></i>
-      </div>
-      <div id="mobile-nav" class="hidden">
-        <a href="../index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container navbar-container">
+        <a href="../index.html" class="navbar-logo">LEO MARQUEZ</a>
+        <div class="navbar-links">
+          <a href="../index.html" class="navbar-link">Home</a>
+          <a href="projects.html" class="navbar-link">Projects</a>
+          <a href="contact.html" class="navbar-link active">Contact</a>
+          <a href="about.html" class="navbar-link">About</a>
+        </div>
+        <button id="hamburger" class="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </nav>
 
-    <h1 id="contact-header">Lets Get Talking!</h1>
-    <div id="contact-wrapper">
-      <div id="contact-icons">
-        <div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="../index.html" class="mobile-menu-link">Home</a>
+      <a href="projects.html" class="mobile-menu-link">Projects</a>
+      <a href="contact.html" class="mobile-menu-link active">Contact</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
+    </div>
+
+    <!-- Contact Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="section-title">Let's Get Talking!</h1>
+      </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact">
+      <div class="container">
+        <div class="contact-container">
+          <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <div class="contact-methods">
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=marquez.leo100@gmail.com"
+                target="_blank"
+                class="contact-method"
+              >
+                <div class="contact-method-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-method-content">
+                  <h3>Email</h3>
+                  <p>marquez.leo100@gmail.com</p>
+                </div>
+              </a>
+
+              <div class="contact-method">
+                <div class="contact-method-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-method-content">
+                  <h3>Phone</h3>
+                  <p>623-703-4686</p>
+                </div>
+              </div>
+
+              <a
+                href="https://github.com/LJMarquez"
+                target="_blank"
+                class="contact-method"
+              >
+                <div class="contact-method-icon">
+                  <i class="fab fa-github"></i>
+                </div>
+                <div class="contact-method-content">
+                  <h3>GitHub</h3>
+                  <p>LJMarquez</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-text">
+            <h2>About Contact</h2>
+            <p>
+              The easiest way to reach out to me is through email or text! I can
+              make calls but won't be able to pick up while I'm at school. I
+              also have my GitHub linked here in case you would like to see my
+              activity there!
+            </p>
+            <p>
+              I'm always open to discussing new projects, creative ideas, or
+              opportunities to be part of your vision. Feel free to reach out
+              using any of the methods listed here, and I'll get back to you as
+              soon as possible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <p class="footer-text">Leo Marquez</p>
+        <div class="social-links">
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=marquez.leo100@gmail.com"
             target="_blank"
-            class="contact-item email-icon contact-hover"
+            class="social-link"
           >
-            <i class="fa-solid fa-envelope"></i>
-            <p>marquez.leo100@gmail.com</p>
+            <i class="fas fa-envelope"></i>
           </a>
-          <div class="contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <p>623-703-4686</p>
-          </div>
+          <a href="tel:6237034686" class="social-link">
+            <i class="fas fa-phone"></i>
+          </a>
           <a
             href="https://github.com/LJMarquez"
             target="_blank"
-            class="contact-item github-icon contact-hover"
+            class="social-link"
           >
-            <i class="fa-brands fa-github"></i>
-            <p>LJMarquez</p>
+            <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
-      <div id="contact-text">
-        <p>
-          The easiest way to reach out to me is through email or text! I can
-          make calls but won't be able to pick up while I'm at school. I also have
-          my github linked here in case you would like to see my activity there!
-        </p>
-      </div>
-    </div>
-
-    <footer>
-      <p>Leo Marquez</p>
-      <div id="socials">
-        <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=marquez.leo100@gmail.com"
-          target="_blank"
-          class="contact-hover footer-icon"
-        >
-          <i class="fa-solid fa-envelope email-icon"></i>
-        </a>
-        <div class="footer-icon phone-icon">
-          <i class="fa-solid fa-phone"></i>
-          <div class="phone-pop-up">623-703-4686</div>
-        </div>
-        <a
-          href="https://github.com/LJMarquez"
-          target="_blank"
-          class="contact-hover footer-icon"
-        >
-          <i class="fa-brands fa-github github-icon"></i>
-        </a>
-      </div>
     </footer>
-    </div>
 
     <script src="../main.js"></script>
-    <script
-      src="https://kit.fontawesome.com/6e0ca69a51.js"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>

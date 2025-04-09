@@ -3,34 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Graphic Design Projects</title>
-    <link rel="icon" type="image/x-icon" href="" />
+    <title>Graphic Design Projects | Leo Marquez</title>
     <link rel="stylesheet" href="../styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <div class="page-container">
-      <nav>
-        <div id="name">LEO MARQUEZ</div>
-        <div id="nav-items">
-          <a href="../index.html" class="grow">Home</a>
-          <a href="projects.html" class="grow">Projects</a>
-          <a href="contact.html" class="grow">Contact</a>
-          <a href="about.html" class="grow">About</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container navbar-container">
+        <a href="../index.html" class="navbar-logo">LEO MARQUEZ</a>
+        <div class="navbar-links">
+          <a href="../index.html" class="navbar-link">Home</a>
+          <a href="projects.html" class="navbar-link">Projects</a>
+          <a href="contact.html" class="navbar-link">Contact</a>
+          <a href="about.html" class="navbar-link">About</a>
         </div>
-        <div id="hamburger-menu">
-          <i class="fa-solid fa-bars"></i>
-        </div>
-        <div id="mobile-nav" class="hidden">
-          <a href="../index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="contact.html">Contact</a>
-          <a href="about.html">About</a>
-        </div>
-      </nav>
+        <button id="hamburger" class="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
 
-      <div class="projects-page-intro">
-        <h1>Graphic Design Projects</h1>
-        <p>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="../index.html" class="mobile-menu-link">Home</a>
+      <a href="projects.html" class="mobile-menu-link">Projects</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="about.html" class="mobile-menu-link">About</a>
+    </div>
+
+    <!-- Projects Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="section-title">Graphic Design Projects</h1>
+        <p class="text-center mb-5">
           Here are all of the graphic design projects I've made over the course
           of my time at Verrado High School! These projects range from logos, to
           flyers, to brochures, to 3D renders. Some of them were made for
@@ -38,38 +47,43 @@
           use today!
         </p>
       </div>
+    </section>
 
-      <div id="graphic-design-project-container"></div>
+    <!-- Projects Grid -->
+    <section class="projects">
+      <div class="container">
+        <div id="graphic-design-project-container" class="projects-grid">
+          <!-- Project cards will be dynamically generated here -->
+        </div>
+      </div>
+    </section>
 
-      <footer>
-        <p>Leo Marquez</p>
-        <div id="socials">
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <p class="footer-text">Leo Marquez</p>
+        <div class="social-links">
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=marquez.leo100@gmail.com"
             target="_blank"
-            class="contact-hover footer-icon"
+            class="social-link"
           >
-            <i class="fa-solid fa-envelope email-icon"></i>
+            <i class="fas fa-envelope"></i>
           </a>
-          <div class="footer-icon phone-icon">
-            <i class="fa-solid fa-phone"></i>
-            <div class="phone-pop-up">623-703-4686</div>
-          </div>
+          <a href="tel:6237034686" class="social-link">
+            <i class="fas fa-phone"></i>
+          </a>
           <a
             href="https://github.com/LJMarquez"
             target="_blank"
-            class="contact-hover footer-icon"
+            class="social-link"
           >
-            <i class="fa-brands fa-github github-icon"></i>
+            <i class="fab fa-github"></i>
           </a>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
 
     <script src="../main.js"></script>
-    <script
-      src="https://kit.fontawesome.com/6e0ca69a51.js"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>

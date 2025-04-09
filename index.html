@@ -8,16 +8,24 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="page-container">
     <div id="home"></div>
     <nav>
       <div id="name">LEO MARQUEZ</div>
       <div id="nav-items">
-        <a href="#home" class="grow">Home</a>
-        <!-- <div> -->
+        <a href="index.html" class="grow">Home</a>
         <a href="/pages/projects.html" class="grow">Projects</a>
-        <!-- </div> -->
         <a href="/pages/contact.html" class="grow">Contact</a>
         <a href="/pages/about.html" class="grow">About</a>
+      </div>
+      <div id="hamburger-menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div id="mobile-nav" class="hidden">
+        <a href="index.html">Home</a>
+        <a href="/pages/projects.html">Projects</a>
+        <a href="/pages/contact.html">Contact</a>
+        <a href="/pages/about.html">About</a>
       </div>
     </nav>
     <div class="intro-banner">
@@ -28,7 +36,7 @@
       </div>
       <div class="cover-image hidden show-left">
         <div>
-          <img src="./assets/profile-picture.png" alt="" />
+          <img src="./assets/profile-picture.png" alt="Leo Marquez profile picture" />
         </div>
       </div>
     </div>
@@ -47,8 +55,8 @@
         I'm Leo, a <span id="web-dev">web developer</span> and a
         <span id="gd">graphic designer!</span>
       </h1>
-      <a href="contact.html" class="image-grow">Let's Get Talking!</a>
-      <a href="about.html" class="image-grow">Learn More About Me!</a>
+      <a href="/pages/contact.html" class="image-grow">Let's Get Talking!</a>
+      <a href="/pages/about.html" class="image-grow">Learn More About Me!</a>
     </div>
 
     <footer>
@@ -75,14 +83,13 @@
       </div>
     </footer>
 
-    <!-- <button type="button" onclick="sendEmail()">AAAAAAAAAAAAA</button> -->
-
     <dialog class="modal">
       <i class="fa-solid fa-xmark modal-close"></i>
       <h2 class="modal-header"></h2>
       <p class="modal-info"></p>
-      <a href="projects.html" class="modal-link">Show Me More!</a>
+      <a href="/pages/projects.html" class="modal-link">Show Me More!</a>
     </dialog>
+    </div>
 
     <script src="main.js"></script>
     <script

@@ -8,16 +8,24 @@
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
+    <div class="page-container">
     <div id="contact"></div>
     <nav>
       <div id="name">LEO MARQUEZ</div>
       <div id="nav-items">
         <a href="../index.html" class="grow">Home</a>
-        <!-- <div> -->
         <a href="projects.html" class="grow">Projects</a>
-        <!-- </div> -->
         <a href="contact.html" class="grow">Contact</a>
         <a href="about.html" class="grow">About</a>
+      </div>
+      <div id="hamburger-menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div id="mobile-nav" class="hidden">
+        <a href="../index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
       </div>
     </nav>
 
@@ -50,10 +58,35 @@
       <div id="contact-text">
         <p>
           The easiest way to reach out to me is through email or text! I can
-          make calls but won't be able to pick while I'm at school. I also have
+          make calls but won't be able to pick up while I'm at school. I also have
           my github linked here in case you would like to see my activity there!
         </p>
       </div>
+    </div>
+
+    <footer>
+      <p>Leo Marquez</p>
+      <div id="socials">
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=marquez.leo100@gmail.com"
+          target="_blank"
+          class="contact-hover footer-icon"
+        >
+          <i class="fa-solid fa-envelope email-icon"></i>
+        </a>
+        <div class="footer-icon phone-icon">
+          <i class="fa-solid fa-phone"></i>
+          <div class="phone-pop-up">623-703-4686</div>
+        </div>
+        <a
+          href="https://github.com/LJMarquez"
+          target="_blank"
+          class="contact-hover footer-icon"
+        >
+          <i class="fa-brands fa-github github-icon"></i>
+        </a>
+      </div>
+    </footer>
     </div>
 
     <script src="../main.js"></script>

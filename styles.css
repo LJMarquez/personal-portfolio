@@ -743,6 +743,15 @@ a:hover {
   font-weight: 500;
 }
 
+/* Add styles for multiple badges */
+.project-badge:nth-of-type(2) {
+  top: 3rem;
+}
+
+.project-badge:nth-of-type(3) {
+  top: 5rem;
+}
+
 /* Project Types */
 .project-types {
   display: grid;

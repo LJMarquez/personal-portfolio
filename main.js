@@ -535,7 +535,7 @@ const talentLink = new Project(
   "Your Future Career Starts Here!",
   "In this project me and my two other teammates were tasked with creating a job website for our school's guidance department that allowed students to apply to jobs, employers to post jobs, a backend admin to approve/deny jobs, and a page where the jobs are listed. We developed a company and site called TalentLink. The main technologies I used for this site were the Astro JS framework, React, MongoDB, Mongoose, Express, Axios, and Node. Astro is a framework that allows you to use multiple frameworks within your project and separate it into modules. I used React to create the components and frontend of the site. I used MongoDB as my database to store all site data (jobs, users, etc). I used Mongoose to create the schemas for the data and to connect to the database. I used Express to create the backend server and Axios to make API calls to the database. I also used CSS and HTML within my React components to style the site and make it look nice. As far as some features of the site, it had a log in with encrpyted passwords, conditional page renders depending on if the user was a student, employer, or admin, carousel elemnts, and procedural generation for jobs. This project was a lot of fun and I learned a lot about how to use these technologies together. I also learned a lot about how to work in a team and communicate with my teammates.",
   "https://github.com/FBLA-2025/FBLA-Web-Coding-Regional",
-  "talent-link.jpg",
+  "talent-link.png",
   null,
   ["gold", "bronze"]
 );
@@ -548,7 +548,7 @@ const edumon = new Project(
   "Can You Defeat The Headmaster?",
   "For this project, I created Edumon, a complex full-stack turn-based RPG where players collect and battle monsters by answering educational questions to determine the success of their moves. I used React Native for the frontend, implemented async storage for managing game state and user progression, and added subject and difficulty customization to tailor the learning experience. The app also includes animations, audio integration, and pixel art visuals to provide a seamless, engaging experience.",
   "https://github.com/FBLA-2025-app/App-FBLA-state",
-  "edumon.jpg",
+  "edumon.png",
   null,
   ["gold", "silver"]
 );
@@ -577,14 +577,31 @@ function createProjectCard(project, container) {
 
   // Create award badges if any
   if (project.awards) {
-    project.awards.forEach((award) => {
+    // Create a container for badges if there are multiple
+    if (project.awards.length > 1) {
+      const badgeContainer = document.createElement("div")
+      badgeContainer.className = "badge-container"
+
+      project.awards.forEach((award, index) => {
+        const badge = document.createElement("div")
+        badge.className = "project-badge"
+        badge.textContent = award === "gold" ? "Gold" : award === "silver" ? "Silver" : "Bronze"
+        badge.style.backgroundColor =
+          award === "gold" ? "var(--warning)" : award === "silver" ? "var(--text-muted)" : "var(--accent-tertiary)"
+        badgeContainer.appendChild(badge)
+      })
+
+      card.appendChild(badgeContainer)
+    } else {
+      // Single badge, use original approach
+      const award = project.awards[0]
       const badge = document.createElement("div")
       badge.className = "project-badge"
       badge.textContent = award === "gold" ? "Gold" : award === "silver" ? "Silver" : "Bronze"
       badge.style.backgroundColor =
         award === "gold" ? "var(--warning)" : award === "silver" ? "var(--text-muted)" : "var(--accent-tertiary)"
       card.appendChild(badge)
-    })
+    }
   }
 
   // Create project image
@@ -711,7 +728,7 @@ if (
   // Featured projects on home page
   if (projectsContainer) {
     // const featuredProjects = myProjects.slice(0, 3)
-    const featuredProjects = [talentLink, novatechSite, culinaryShowdown]
+    const featuredProjects = [talentLink, edumon, novatechSite]
     featuredProjects.forEach((project) => {
       createProjectCard(project, projectsContainer)
     })
@@ -1020,7 +1037,7 @@ function typePersonality() {
   }, 50)
 }
 
-const featuredProjectsArray = [novatechSite, crocGame, copperCanyonFilmFest]
+const featuredProjectsArray = [talentLink, edumon]
 
 // Initialize the carousel with featured projects
 document.addEventListener("DOMContentLoaded", () => {
@@ -1049,6 +1066,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const redControl = document.createElement("span")
       redControl.className = "carousel-control red"
+      redControl.innerHTML = '<i class="fas fa-times"></i>' // Add SVG icon for ×
       redControl.addEventListener("click", (e) => {
         e.stopPropagation()
         prevBtn.click()
@@ -1059,6 +1077,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const greenControl = document.createElement("span")
       greenControl.className = "carousel-control green"
+      greenControl.innerHTML = '<i class="fas fa-plus"></i>' // Add SVG icon for +
       greenControl.addEventListener("click", (e) => {
         e.stopPropagation()
         window.open(project.projectLink, "_blank")
